@@ -174,92 +174,56 @@
       </div>
     </section>
 
-    <!-- Master Platter Stage & Interactive Tasting Ledger Section -->
-    <section class="section menu-degustation-section" id="signatures-section">
+    <!-- Cinematic 3D Spotlight Menu Showcase -->
+    <section class="section menu-cinematic-section" id="signatures-section">
       <div class="container">
-        <!-- Top Control Bar (Pills + Live Status + Full Menu CTA) -->
-        <div class="degustation-top-bar">
-          <div class="showcase-filter-pills" id="showcase-category-filters">
-            <button class="showcase-pill-btn active" data-filter="all">All Signatures</button>
-            <button class="showcase-pill-btn" data-filter="curries">Curries</button>
-            <button class="showcase-pill-btn" data-filter="biryani">Biryani</button>
-            <button class="showcase-pill-btn" data-filter="starters">Clay Tandoor</button>
+        <!-- Section Header Row with Category Filters & Explore Full Menu CTA -->
+        <div class="cinematic-header-row">
+          <div class="cinematic-header-text">
+            <span class="section-tag">Chef's Signature Repertoire</span>
+            <h2 class="font-serif cinematic-title">Celebrated Creations of the Royal Hearth</h2>
           </div>
 
-          <div class="degustation-status-pill">
-            <span class="pulse-dot"></span>
-            <span id="degustation-status-label">Live Culinary Spotlight · Auto-rotating</span>
-          </div>
+          <div class="cinematic-header-controls">
+            <!-- Filter Pills -->
+            <div class="showcase-filter-pills" id="showcase-category-filters">
+              <button class="showcase-pill-btn active" data-filter="all">All Signatures</button>
+              <button class="showcase-pill-btn" data-filter="curries">Curries</button>
+              <button class="showcase-pill-btn" data-filter="biryani">Biryani</button>
+              <button class="showcase-pill-btn" data-filter="starters">Clay Tandoor</button>
+            </div>
 
-          <a href="menu.html" class="btn btn-primary menu-explore-btn">
-            Explore Full Menu (28 Dishes) →
-          </a>
+            <a href="menu.html" class="btn btn-primary menu-explore-btn">
+              Explore Full Menu (28) →
+            </a>
+          </div>
         </div>
 
-        <!-- Master Degustation Arena -->
-        <div class="degustation-arena" id="degustation-arena">
-          <!-- LEFT: The Live Platter Spotlight Stage -->
-          <div class="platter-stage" id="platter-stage">
-            <div class="platter-visual-wrapper">
-              <!-- Porcelain Platter Frame with Atmospheric Aura -->
-              <div class="platter-circle-frame">
-                <div class="platter-glow-ring"></div>
-                <img src="assets/images/biryani_awadhi.jpg" alt="Featured Dish" class="platter-dish-img" id="stage-dish-img">
-                <div class="platter-floating-badge" id="stage-badge-container">
-                  <span class="badge badge-chef">Chef's Signature</span>
-                </div>
-              </div>
+        <!-- 3D Cinematic Spotlight Stage -->
+        <div class="cinematic-stage-wrap" id="cinematic-stage-wrap">
+          <button class="stage-nav-arrow stage-nav-prev" id="cinematic-prev" aria-label="Previous signature dish" title="Previous dish">
+            <span>←</span>
+          </button>
 
-              <!-- Stage Quick Steppers -->
-              <div class="stage-steppers">
-                <button class="stage-step-btn" id="stage-prev-btn" aria-label="Previous signature dish" title="Previous dish">←</button>
-                <div class="stage-step-counter" id="stage-counter">01 / 04</div>
-                <button class="stage-step-btn" id="stage-next-btn" aria-label="Next signature dish" title="Next dish">→</button>
-              </div>
-            </div>
-
-            <!-- Platter Details Presentation -->
-            <div class="platter-details" id="stage-dish-details">
-              <div class="platter-meta-tags">
-                <span class="dietary-marker dietary-non-veg" id="stage-dietary-marker"><span class="dietary-symbol"></span></span>
-                <span class="stage-spice-tag" id="stage-spice-tag">MEDIUM SPICE</span>
-                <span class="stage-portion-tag text-muted" id="stage-portion-tag">Serves 1-2 (550g)</span>
-              </div>
-
-              <h3 class="platter-title font-serif" id="stage-title">Awadhi Murgh Dum Biryani</h3>
-              <p class="platter-desc text-muted" id="stage-desc">Long-grain Dehradun aged basmati, slow-steamed in a sealed dough handi with saffron, tender chicken, and caramelized shallots.</p>
-
-              <div class="platter-story-box" id="stage-story-box">
-                <span class="story-icon">✨</span>
-                <span class="story-text" id="stage-story">Crafted using the ancient Dum Pukht (slow steam) technique passed down from Awadhi royal bawarchis.</span>
-              </div>
-
-              <div class="platter-actions-bar">
-                <div class="platter-price-group">
-                  <span class="price-value font-serif" id="stage-price">₹545</span>
-                </div>
-                <div class="platter-buttons">
-                  <button class="btn btn-outline btn-fav" id="stage-fav-btn" title="Save to favorites">
-                    <span class="fav-heart" id="stage-fav-heart">♡</span>
-                  </button>
-                  <button class="btn btn-primary btn-customize-stage" id="stage-customize-btn">
-                    Customize Dish +
-                  </button>
-                </div>
-              </div>
+          <div class="cinematic-stage-viewport" id="cinematic-viewport">
+            <div class="cinematic-cards-stage" id="cinematic-cards-stage">
+              <!-- Dynamically populated 3D spotlight cards -->
             </div>
           </div>
 
-          <!-- RIGHT: The Interactive Degustation Ledger -->
-          <div class="degustation-ledger">
-            <div class="ledger-header">
-              <span class="section-tag m-0">Signature Selection</span>
-              <h4 class="font-serif ledger-title">Degustation Ledger</h4>
-              <p class="text-xs text-muted m-0">Click or hover any dish to spotlight tableside</p>
-            </div>
-            <div class="ledger-list" id="degustation-ledger-list">
-              <!-- Dynamically populated interactive ledger items with active progress countdown bar -->
-            </div>
+          <button class="stage-nav-arrow stage-nav-next" id="cinematic-next" aria-label="Next signature dish" title="Next dish">
+            <span>→</span>
+          </button>
+        </div>
+
+        <!-- Stage Footer: Interactive Dots & Status -->
+        <div class="cinematic-stage-footer">
+          <div class="cinematic-dots-bar" id="cinematic-dots-bar">
+            <!-- Dynamically generated indicators -->
+          </div>
+          <div class="cinematic-status-pill">
+            <span class="pulse-dot"></span>
+            <span id="cinematic-status-text">3D Spotlight Reel · Auto-gliding (Hover or click any dish to focus)</span>
           </div>
         </div>
       </div>
@@ -494,156 +458,193 @@
   <script src="js/cart.js"></script>
   <script src="js/menu.js"></script>
   <script>
-    // Initialize Master Platter Stage & Interactive Degustation Ledger
+    // Initialize Cinematic 3D Spotlight Stage
     document.addEventListener('DOMContentLoaded', () => {
-      const arena = document.getElementById('degustation-arena');
-      const ledgerList = document.getElementById('degustation-ledger-list');
-      const stageImg = document.getElementById('stage-dish-img');
-      const stageBadge = document.getElementById('stage-badge-container');
-      const stageDietary = document.getElementById('stage-dietary-marker');
-      const stageSpice = document.getElementById('stage-spice-tag');
-      const stagePortion = document.getElementById('stage-portion-tag');
-      const stageTitle = document.getElementById('stage-title');
-      const stageDesc = document.getElementById('stage-desc');
-      const stageStory = document.getElementById('stage-story');
-      const stagePrice = document.getElementById('stage-price');
-      const stageCounter = document.getElementById('stage-counter');
-      const stageFavBtn = document.getElementById('stage-fav-btn');
-      const stageFavHeart = document.getElementById('stage-fav-heart');
-      const stageCustomizeBtn = document.getElementById('stage-customize-btn');
-      const stagePrevBtn = document.getElementById('stage-prev-btn');
-      const stageNextBtn = document.getElementById('stage-next-btn');
-      const statusLabel = document.getElementById('degustation-status-label');
+      const stageWrap = document.getElementById('cinematic-stage-wrap');
+      const cardsStage = document.getElementById('cinematic-cards-stage');
+      const prevBtn = document.getElementById('cinematic-prev');
+      const nextBtn = document.getElementById('cinematic-next');
+      const dotsBar = document.getElementById('cinematic-dots-bar');
+      const statusText = document.getElementById('cinematic-status-text');
       const filterBtns = document.querySelectorAll('.showcase-pill-btn');
 
-      if (!arena || !ledgerList) return;
+      if (!stageWrap || !cardsStage) return;
 
       const fullMenu = StorageService.getMenu();
-      let currentDishes = fullMenu.filter(d => d.featured || d.bestseller || d.chefSpecial);
-      if (currentDishes.length < 4) currentDishes = fullMenu.slice(0, 6);
+      let signatureDishes = fullMenu.filter(d => d.featured || d.bestseller || d.chefSpecial);
+      if (signatureDishes.length < 5) signatureDishes = fullMenu.slice(0, 8);
 
       let activeCategory = 'all';
-      let activeList = currentDishes;
+      let activeList = signatureDishes;
       let activeIndex = 0;
       let autoTimer = null;
       let isPaused = false;
-      const ROTATION_INTERVAL = 4400; // ms per dish
+      const ROTATION_INTERVAL = 4000;
 
       function getCategoryDishes(cat) {
-        if (cat === 'all') return currentDishes;
+        if (cat === 'all') return signatureDishes;
         const filtered = fullMenu.filter(d => d.category === cat);
-        return filtered.length > 0 ? filtered : currentDishes;
+        return filtered.length > 0 ? filtered : signatureDishes;
       }
 
-      function updateStage(dish, animate = true) {
-        if (!dish) return;
-
-        if (animate && stageImg) {
-          stageImg.classList.add('fade-transition');
-          setTimeout(() => {
-            stageImg.classList.remove('fade-transition');
-          }, 400);
-        }
-
-        stageImg.src = dish.image;
-        stageImg.alt = dish.name;
-        
-        stageBadge.innerHTML = dish.chefSpecial 
-          ? `<span class="badge badge-chef">Chef's Signature</span>` 
-          : (dish.bestseller ? `<span class="badge badge-bestseller">House Bestseller</span>` : '');
-
-        stageDietary.className = `dietary-marker dietary-${dish.dietary}`;
-        stageSpice.textContent = `${(dish.spiceLevel || 'medium').toUpperCase()} SPICE`;
-        stagePortion.textContent = dish.servingSize || 'Serves 2';
-        stageTitle.textContent = dish.name;
-        stageDesc.textContent = dish.shortDescription || dish.description;
-        stageStory.textContent = dish.story || 'Slow-cooked in clay ovens and seasoned with small-batch heritage spices.';
-        stagePrice.textContent = formatCurrency(dish.price);
-        stageCounter.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(activeList.length).padStart(2, '0')}`;
-
-        // Favorites state
+      function renderCards() {
         const favs = StorageService.getFavorites();
-        const isFav = favs.includes(dish.id);
-        stageFavBtn.classList.toggle('is-fav', isFav);
-        stageFavHeart.textContent = isFav ? '♥' : '♡';
-
-        // Customize button target
-        stageCustomizeBtn.onclick = () => {
-          MenuController.openDishModal(dish.id);
-        };
-
-        // Favorite button click
-        stageFavBtn.onclick = (e) => {
-          e.preventDefault();
-          StorageService.toggleFavorite(dish.id);
-          const nowFav = StorageService.getFavorites().includes(dish.id);
-          stageFavBtn.classList.toggle('is-fav', nowFav);
-          stageFavHeart.textContent = nowFav ? '♥' : '♡';
-          showToast(nowFav ? 'Saved to favourite dishes' : 'Removed from favourites', 'info');
-        };
-      }
-
-      function renderLedger() {
-        ledgerList.innerHTML = activeList.map((dish, idx) => {
-          const isActive = idx === activeIndex;
+        cardsStage.innerHTML = activeList.map((dish, idx) => {
+          const isFav = favs.includes(dish.id);
           return `
-            <div class="ledger-item ${isActive ? 'active' : ''}" data-ledger-idx="${idx}">
-              <div class="ledger-thumb-wrapper">
-                <img src="${dish.image}" alt="${escapeHtml(dish.name)}" class="ledger-thumb-img" loading="lazy">
-                <span class="ledger-order-num">${String(idx + 1).padStart(2, '0')}</span>
+            <div class="cinematic-card" data-card-idx="${idx}" data-dish-id="${dish.id}">
+              <div class="card-media-wrap">
+                <img src="${dish.image}" alt="${escapeHtml(dish.name)}" class="cinematic-card-img" loading="lazy">
+                <div class="cinematic-card-overlay"></div>
+                <div class="cinematic-top-badges">
+                  <span class="dietary-marker dietary-${dish.dietary}">
+                    <span class="dietary-symbol"></span>
+                  </span>
+                  ${dish.chefSpecial ? `<span class="badge badge-chef">Chef's Signature</span>` : (dish.bestseller ? `<span class="badge badge-bestseller">Bestseller</span>` : '')}
+                  <button class="btn-fav ${isFav ? 'is-fav' : ''}" data-fav-id="${dish.id}" title="Save to favorites">
+                    <span class="fav-heart">${isFav ? '♥' : '♡'}</span>
+                  </button>
+                </div>
               </div>
-              <div class="ledger-item-content">
-                <div class="ledger-item-top">
-                  <h5 class="ledger-item-name font-serif">${escapeHtml(dish.name)}</h5>
-                  <span class="ledger-item-price font-serif">${formatCurrency(dish.price)}</span>
+
+              <div class="cinematic-card-body">
+                <div class="cinematic-meta-row">
+                  <span class="cinematic-spice-pill">${(dish.spiceLevel || 'medium').toUpperCase()} SPICE</span>
+                  ${dish.servingSize ? `<span class="cinematic-portion text-xs">${escapeHtml(dish.servingSize)}</span>` : ''}
                 </div>
-                <div class="ledger-item-bottom">
-                  <span class="ledger-spice-pill">${(dish.spiceLevel || 'medium').toUpperCase()}</span>
-                  <span class="ledger-item-sub text-muted">${escapeHtml(dish.servingSize || 'Serves 1-2')}</span>
+                <h3 class="cinematic-card-title font-serif">
+                  <a href="dish.html?id=${dish.id}" class="card-title-link">${escapeHtml(dish.name)}</a>
+                </h3>
+                <p class="cinematic-card-desc">${escapeHtml(dish.shortDescription || dish.description)}</p>
+                
+                <div class="cinematic-card-footer">
+                  <span class="cinematic-price font-serif">${formatCurrency(dish.price)}</span>
+                  <button class="btn btn-primary btn-sm btn-customize-cinematic" data-open-dish="${dish.id}">
+                    Customize +
+                  </button>
                 </div>
-                ${isActive ? `<div class="ledger-progress-track"><div class="ledger-progress-fill" style="animation-duration: ${ROTATION_INTERVAL}ms;"></div></div>` : ''}
               </div>
             </div>
           `;
         }).join('');
 
-        // Attach ledger item click & hover events
-        ledgerList.querySelectorAll('.ledger-item').forEach(item => {
-          item.addEventListener('click', () => {
-            const idx = parseInt(item.getAttribute('data-ledger-idx'), 10);
-            selectDish(idx, true);
+        // Attach listeners
+        cardsStage.querySelectorAll('[data-open-dish]').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dishId = btn.getAttribute('data-open-dish');
+            MenuController.openDishModal(dishId);
           });
-          item.addEventListener('mouseenter', () => {
-            const idx = parseInt(item.getAttribute('data-ledger-idx'), 10);
-            selectDish(idx, true);
+        });
+
+        cardsStage.querySelectorAll('[data-fav-id]').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dishId = btn.getAttribute('data-fav-id');
+            StorageService.toggleFavorite(dishId);
+            const nowFav = StorageService.getFavorites().includes(dishId);
+            btn.classList.toggle('is-fav', nowFav);
+            btn.querySelector('.fav-heart').textContent = nowFav ? '♥' : '♡';
+            showToast(nowFav ? 'Saved to favourite dishes' : 'Removed from favourites', 'info');
+          });
+        });
+
+        cardsStage.querySelectorAll('.cinematic-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const idx = parseInt(card.getAttribute('data-card-idx'), 10);
+            if (idx !== activeIndex) {
+              selectIndex(idx, true);
+            }
+          });
+        });
+
+        renderDots();
+        updatePositions();
+      }
+
+      function updatePositions() {
+        const cards = cardsStage.querySelectorAll('.cinematic-card');
+        const total = cards.length;
+        if (total === 0) return;
+
+        // Card slot spacing
+        const isMobile = window.innerWidth <= 768;
+        const spacing = isMobile ? 290 : 370;
+
+        cards.forEach((card, idx) => {
+          // Calculate relative circular offset
+          let offset = idx - activeIndex;
+          if (offset > total / 2) offset -= total;
+          if (offset < -total / 2) offset += total;
+
+          const absOffset = Math.abs(offset);
+          card.classList.toggle('is-active', offset === 0);
+          card.classList.toggle('is-flanking', absOffset === 1);
+
+          if (absOffset > 2) {
+            card.style.opacity = '0';
+            card.style.pointerEvents = 'none';
+            card.style.transform = `translateX(${offset * spacing}px) scale(0.7) translateZ(-200px)`;
+            card.style.zIndex = '0';
+          } else {
+            const scale = offset === 0 ? 1.05 : (absOffset === 1 ? 0.9 : 0.78);
+            const opacity = offset === 0 ? 1 : (absOffset === 1 ? 0.75 : 0.4);
+            const rotY = offset * -12;
+            const transX = offset * spacing;
+            const zIndex = 10 - absOffset;
+
+            card.style.opacity = String(opacity);
+            card.style.pointerEvents = 'auto';
+            card.style.zIndex = String(zIndex);
+            card.style.transform = `translateX(${transX}px) scale(${scale}) rotateY(${rotY}deg)`;
+          }
+        });
+
+        // Update dots
+        if (dotsBar) {
+          dotsBar.querySelectorAll('.cinematic-dot').forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === activeIndex);
+          });
+        }
+      }
+
+      function renderDots() {
+        if (!dotsBar) return;
+        dotsBar.innerHTML = activeList.map((_, i) => `
+          <button class="cinematic-dot ${i === activeIndex ? 'active' : ''}" data-dot-idx="${i}" aria-label="Go to slide ${i+1}"></button>
+        `).join('');
+
+        dotsBar.querySelectorAll('.cinematic-dot').forEach(dot => {
+          dot.addEventListener('click', () => {
+            const idx = parseInt(dot.getAttribute('data-dot-idx'), 10);
+            selectIndex(idx, true);
           });
         });
       }
 
-      function selectDish(idx, userInitiated = false) {
-        if (idx < 0) idx = activeList.length - 1;
-        if (idx >= activeList.length) idx = 0;
+      function selectIndex(idx, userInitiated = false) {
+        const total = activeList.length;
+        if (idx < 0) idx = total - 1;
+        if (idx >= total) idx = 0;
         activeIndex = idx;
-        const dish = activeList[activeIndex];
-        updateStage(dish, true);
-        renderLedger();
+        updatePositions();
         if (userInitiated) {
-          restartAutoRotation();
+          restartAutoPlay();
         }
       }
 
-      function nextDish() {
-        selectDish(activeIndex + 1);
+      function nextSlide() {
+        selectIndex(activeIndex + 1);
       }
 
-      function prevDish() {
-        selectDish(activeIndex - 1);
+      function prevSlide() {
+        selectIndex(activeIndex - 1);
       }
 
-      if (stageNextBtn) stageNextBtn.addEventListener('click', () => { nextDish(); restartAutoRotation(); });
-      if (stagePrevBtn) stagePrevBtn.addEventListener('click', () => { prevDish(); restartAutoRotation(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); restartAutoPlay(); });
+      if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); restartAutoPlay(); });
 
-      // Category filters
+      // Filter pills
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           filterBtns.forEach(b => b.classList.remove('active'));
@@ -651,54 +652,49 @@
           activeCategory = btn.getAttribute('data-filter');
           activeList = getCategoryDishes(activeCategory);
           activeIndex = 0;
-          updateStage(activeList[0], true);
-          renderLedger();
-          restartAutoRotation();
+          renderCards();
+          restartAutoPlay();
         });
       });
 
-      // Auto rotation timers
-      function startAutoRotation() {
-        stopAutoRotation();
+      // Auto-glide with pause on hover
+      function startAutoPlay() {
+        stopAutoPlay();
         autoTimer = setInterval(() => {
           if (!isPaused) {
-            nextDish();
+            nextSlide();
           }
         }, ROTATION_INTERVAL);
-        if (statusLabel) statusLabel.textContent = 'Live Culinary Spotlight · Auto-rotating';
+        if (statusText) statusText.textContent = '3D Spotlight Reel · Auto-gliding (Hover to pause)';
       }
 
-      function stopAutoRotation() {
+      function stopAutoPlay() {
         if (autoTimer) clearInterval(autoTimer);
       }
 
-      function restartAutoRotation() {
-        stopAutoRotation();
-        startAutoRotation();
+      function restartAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
       }
 
-      // Pause on hover over the entire arena
-      arena.addEventListener('mouseenter', () => {
+      stageWrap.addEventListener('mouseenter', () => {
         isPaused = true;
-        if (statusLabel) statusLabel.textContent = 'Spotlight Paused (Viewing dish tableside)';
-        const activeFill = ledgerList.querySelector('.ledger-progress-fill');
-        if (activeFill) activeFill.style.animationPlayState = 'paused';
+        if (statusText) statusText.textContent = 'Spotlight Paused (Click side dishes to rotate)';
       });
 
-      arena.addEventListener('mouseleave', () => {
+      stageWrap.addEventListener('mouseleave', () => {
         isPaused = false;
-        if (statusLabel) statusLabel.textContent = 'Live Culinary Spotlight · Auto-rotating';
-        const activeFill = ledgerList.querySelector('.ledger-progress-fill');
-        if (activeFill) activeFill.style.animationPlayState = 'running';
-        restartAutoRotation();
+        if (statusText) statusText.textContent = '3D Spotlight Reel · Auto-gliding (Hover to pause)';
+        restartAutoPlay();
       });
 
-      // Initial boot
-      updateStage(activeList[0], false);
-      renderLedger();
-      startAutoRotation();
+      window.addEventListener('resize', updatePositions);
 
-      // Initialize MenuController for dish modal
+      // Boot
+      renderCards();
+      startAutoPlay();
+
+      // Initialize dish modal controller
       MenuController.setupModal();
     });
   </script>
