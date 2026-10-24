@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Bookings Management — Srestaurents Admin</title>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <div class="admin-brand-title font-serif">Srestaurents</div>
+      <div class="admin-brand-tag">Operations Console · Demo</div>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="index.html" class="admin-nav-item">
+        <span class="admin-nav-icon">📊</span>
+        <span>Overview Dashboard</span>
+      </a>
+      <a href="menu.html" class="admin-nav-item">
+        <span class="admin-nav-icon">🍽️</span>
+        <span>Menu Management</span>
+      </a>
+      <a href="orders.html" class="admin-nav-item">
+        <span class="admin-nav-icon">🧾</span>
+        <span>Live Orders Console</span>
+      </a>
+      <a href="reservations.html" class="admin-nav-item active">
+        <span class="admin-nav-icon">📅</span>
+        <span>Table Bookings</span>
+      </a>
+      <a href="settings.html" class="admin-nav-item">
+        <span class="admin-nav-icon">⚙️</span>
+        <span>Restaurant Settings</span>
+      </a>
+      <div class="border-top my-2 pt-2" style="border-color: rgba(255,255,255,0.1);"></div>
+      <a href="../reservations.html" class="admin-nav-item" target="_blank">
+        <span class="admin-nav-icon">🌐</span>
+        <span>Public Booking Page ↗</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <div>Demo Environment</div>
+      <div class="text-xs text-muted">Table allocation &amp; capacity</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <div>
+        <h1 class="admin-topbar-title">Table Reservations &amp; Floor Management</h1>
+        <div class="text-xs text-muted">Allocate tables, review guest requests, and manage dining capacity</div>
+      </div>
+
+      <div class="admin-topbar-actions">
+        <a href="../reservations.html" target="_blank" class="btn btn-sm btn-primary">
+          + Book Walk-In Guest
+        </a>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <!-- Filter Bar -->
+      <div class="admin-filter-bar mb-4">
+        <button class="admin-filter-btn active" data-res-filter="all">All Bookings</button>
+        <button class="admin-filter-btn" data-res-filter="confirmed">Confirmed</button>
+        <button class="admin-filter-btn" data-res-filter="pending">Pending</button>
+        <button class="admin-filter-btn" data-res-filter="seated">Seated at Table</button>
+        <button class="admin-filter-btn" data-res-filter="cancelled">Cancelled</button>
+      </div>
+
+      <!-- Reservations List (Pre-rendered for immediate view, hydrated dynamically) -->
+      <div id="admin-reservations-list">
+        <!-- Booking 1 -->
+        <div class="card p-4 mb-3 admin-res-card" data-res-id="RES-2026-301">
+          <div class="flex-between align-center flex-wrap gap-2 pb-2 border-bottom mb-3">
+            <div>
+              <span class="font-mono font-bold text-base">#RES-2026-301</span>
+              <span class="badge badge-success ml-2">confirmed</span>
+            </div>
+            <div class="text-right">
+              <span class="badge badge-outline">Table C-04</span>
+            </div>
+          </div>
+
+          <div class="grid grid-3 gap-3 mb-3">
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Guest</div>
+              <strong>Ananya Deshmukh</strong>
+              <div class="text-xs text-muted">+91 98200 55443 · ananya.d@example.com</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Schedule &amp; Area</div>
+              <div>2026-10-25 @ <strong class="text-primary font-mono">08:30 PM</strong></div>
+              <div class="text-xs text-muted">4 Guests · Heritage Courtyard</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Occasion &amp; Requests</div>
+              <div class="text-xs font-semibold">Anniversary Celebration</div>
+              <div class="text-xs italic text-muted mt-1">"Quiet corner table near the stone fountain, celebrate with complimentary dessert candle."</div>
+            </div>
+          </div>
+
+          <div class="flex-end gap-2 pt-2 border-top">
+            <button class="btn btn-sm btn-outline res-status-btn" data-id="RES-2026-301" data-status="confirmed" disabled>Confirmed</button>
+            <button class="btn btn-sm btn-primary res-status-btn" data-id="RES-2026-301" data-status="seated">Mark Seated</button>
+            <button class="btn btn-sm btn-danger res-status-btn" data-id="RES-2026-301" data-status="cancelled">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Booking 2 -->
+        <div class="card p-4 mb-3 admin-res-card" data-res-id="RES-2026-302">
+          <div class="flex-between align-center flex-wrap gap-2 pb-2 border-bottom mb-3">
+            <div>
+              <span class="font-mono font-bold text-base">#RES-2026-302</span>
+              <span class="badge badge-success ml-2">confirmed</span>
+            </div>
+            <div class="text-right">
+              <span class="badge badge-outline">Table D-02</span>
+            </div>
+          </div>
+
+          <div class="grid grid-3 gap-3 mb-3">
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Guest</div>
+              <strong>Dr. Siddharth Rao</strong>
+              <div class="text-xs text-muted">+91 97000 88991 · siddharth.rao@example.com</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Schedule &amp; Area</div>
+              <div>2026-10-25 @ <strong class="text-primary font-mono">01:15 PM</strong></div>
+              <div class="text-xs text-muted">2 Guests · Intimate Dining Hall</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Occasion &amp; Requests</div>
+              <div class="text-xs font-semibold">Executive Lunch</div>
+              <div class="text-xs italic text-muted mt-1">"High acoustic comfort area for business discussion."</div>
+            </div>
+          </div>
+
+          <div class="flex-end gap-2 pt-2 border-top">
+            <button class="btn btn-sm btn-outline res-status-btn" data-id="RES-2026-302" data-status="confirmed" disabled>Confirmed</button>
+            <button class="btn btn-sm btn-primary res-status-btn" data-id="RES-2026-302" data-status="seated">Mark Seated</button>
+            <button class="btn btn-sm btn-danger res-status-btn" data-id="RES-2026-302" data-status="cancelled">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Booking 3 -->
+        <div class="card p-4 mb-3 admin-res-card" data-res-id="RES-2026-303">
+          <div class="flex-between align-center flex-wrap gap-2 pb-2 border-bottom mb-3">
+            <div>
+              <span class="font-mono font-bold text-base">#RES-2026-303</span>
+              <span class="badge badge-warning ml-2">pending</span>
+            </div>
+            <div class="text-right">
+              <span class="badge badge-outline">PDR-01</span>
+            </div>
+          </div>
+
+          <div class="grid grid-3 gap-3 mb-3">
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Guest</div>
+              <strong>Meera Nambiar</strong>
+              <div class="text-xs text-muted">+91 99400 12345 · meera.n@example.com</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Schedule &amp; Area</div>
+              <div>2026-10-26 @ <strong class="text-primary font-mono">07:45 PM</strong></div>
+              <div class="text-xs text-muted">8 Guests · Royal Private Dining Room</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold">Occasion &amp; Requests</div>
+              <div class="text-xs font-semibold">Family Birthday Feast</div>
+              <div class="text-xs italic text-muted mt-1">"Two elderly guests, require easy access without stairs. High chair for toddler."</div>
+            </div>
+          </div>
+
+          <div class="flex-end gap-2 pt-2 border-top">
+            <button class="btn btn-sm btn-outline res-status-btn" data-id="RES-2026-303" data-status="confirmed">Confirm</button>
+            <button class="btn btn-sm btn-primary res-status-btn" data-id="RES-2026-303" data-status="seated">Mark Seated</button>
+            <button class="btn btn-sm btn-danger res-status-btn" data-id="RES-2026-303" data-status="cancelled">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        if (typeof StorageService !== 'undefined') {
+          StorageService.initDefaults();
+        }
+        if (typeof AdminController !== 'undefined') {
+          AdminController.initReservationsPage();
+        }
+      } catch (e) {
+        console.warn('Reservations admin init warning:', e);
+      }
+    });
+  </script>
+</body>
+</html>

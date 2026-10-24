@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Srestaurents — Multi-Cuisine Culinary Atelier | Heritage Indian & Global Dining</title>
+  <meta name="description" content="Presentation prototype for Srestaurents: A multi-cuisine restaurant in India celebrating Awadhi dum pukht, slow-simmered curries, clay oven grills, and pan-Asian curations.">
+
+  <!-- Typography: Editorial Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Demo Presentation Notice -->
+  <aside class="demo-banner" aria-label="Demo notice">
+    <div class="demo-banner-content">
+      <div class="flex-align-center gap-2">
+        <span class="demo-banner-badge">Presentation Prototype</span>
+        <span>Interactive preview for Srestaurents. Simulated orders, mock payments &amp; local demo storage only.</span>
+      </div>
+      <div class="demo-banner-links">
+        <a href="admin/index.html">Admin Suite ↗</a>
+        <button id="global-reset-demo-btn" type="button">Reset Demo Data</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-wordmark" aria-label="Srestaurents Home">
+        <span class="brand-name">Srestaurents</span>
+        <span class="brand-subtext">Culinary Atelier · India</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">Our Story</a>
+        <a href="reservations.html" class="nav-link">Reservations</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a href="account.html" class="account-icon-btn" title="Demo Guest Account" aria-label="Account">
+          <span>👤</span>
+        </a>
+
+        <a href="order.html" class="cart-icon-btn" title="View Order Basket" aria-label="Cart">
+          <span class="cart-icon-symbol">🧺</span>
+          <span class="cart-badge is-empty" aria-label="Cart items count">0</span>
+        </a>
+
+        <a href="menu.html" class="btn btn-primary btn-sm">Order Online</a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Nav Drawer -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+      <div class="brand-wordmark">
+        <span class="brand-name">Srestaurents</span>
+        <span class="brand-subtext">Culinary Atelier</span>
+      </div>
+      <button class="modal-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+      <li><a href="menu.html" class="mobile-nav-link">Full Menu</a></li>
+      <li><a href="about.html" class="mobile-nav-link">Our Story &amp; Ethos</a></li>
+      <li><a href="reservations.html" class="mobile-nav-link">Book a Table</a></li>
+      <li><a href="order.html" class="mobile-nav-link">Order Basket</a></li>
+      <li><a href="account.html" class="mobile-nav-link">Guest Account</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact &amp; Location</a></li>
+      <li><a href="admin/index.html" class="mobile-nav-link text-accent">Demo Admin Dashboard ↗</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <div class="text-xs text-muted">Jubilee Hills, Hyderabad · Open Tue–Sun</div>
+      <div class="text-xs text-muted mt-1">+91 98765 43210 (Demo Desk)</div>
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>✨</span>
+            <span>Heritage Awadhi, Royal Grills &amp; Pan-Asian</span>
+          </div>
+          <h1 class="hero-headline font-serif">Food born of fire, time, and heritage.</h1>
+          <p class="hero-intro">
+            At Srestaurents, we honor slow-cooked Awadhi traditions alongside charcoal tandoori grills and modern pan-Asian curations. Every handi is sealed with dough, every spice stone-ground, and every plate served with warmth.
+          </p>
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-primary btn-lg">Explore Our Menu →</a>
+            <a href="reservations.html" class="btn btn-outline btn-lg">Book a Table</a>
+          </div>
+
+          <div class="hero-features-bar">
+            <div class="hero-feat-item">
+              <span class="hero-feat-icon">🍲</span>
+              <span>24-Hour Charcoal Simmer</span>
+            </div>
+            <div class="hero-feat-item">
+              <span class="hero-feat-icon">🌿</span>
+              <span>Cold-Pressed Ghee &amp; Spices</span>
+            </div>
+            <div class="hero-feat-item">
+              <span class="hero-feat-icon">🛵</span>
+              <span>Insulated Gourmet Delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media-wrapper">
+          <div class="hero-img-frame">
+            <img src="assets/images/hero_spread.jpg" alt="Rich Indian multi-cuisine banquet feast on rustic stone table" class="hero-img">
+          </div>
+          <div class="hero-floating-card">
+            <div class="hero-card-title">Awadhi Dum Pukht</div>
+            <div class="hero-card-desc">Sealed earthen handis slow-steamed over low charcoal embers for unmatched aroma.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Bar -->
+    <section class="section section-sm section-bg-subtle">
+      <div class="container">
+        <div class="services-grid">
+          <div class="service-pillar-card">
+            <span class="service-pillar-icon">🌿</span>
+            <h3 class="service-pillar-title font-serif">The Courtyard Dine-In</h3>
+            <p class="service-pillar-desc">
+              Dine beneath open-air frangipani branches or inside our warm acoustic dining hall with handcrafted copper tableware.
+            </p>
+            <div class="mt-3">
+              <a href="reservations.html" class="btn-link text-sm">Reserve a Table →</a>
+            </div>
+          </div>
+
+          <div class="service-pillar-card">
+            <span class="service-pillar-icon">🛍️</span>
+            <h3 class="service-pillar-title font-serif">Curbside Takeaway</h3>
+            <p class="service-pillar-desc">
+              Order online and collect piping hot directly at our Jubilee Hills valet counter without waiting or stepping out.
+            </p>
+            <div class="mt-3">
+              <a href="menu.html" class="btn-link text-sm">Schedule Pickup →</a>
+            </div>
+          </div>
+
+          <div class="service-pillar-card">
+            <span class="service-pillar-icon">🛵</span>
+            <h3 class="service-pillar-title font-serif">Gourmet Direct Delivery</h3>
+            <p class="service-pillar-desc">
+              Biodegradable tamper-proof thermal packaging engineered to keep gravies silky and rotis blistered and warm.
+            </p>
+            <div class="mt-3">
+              <a href="menu.html" class="btn-link text-sm">Order to Doorstep →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Dishes Spotlight -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header flex-between align-center flex-wrap gap-3">
+          <div>
+            <span class="section-tag">Chef's Curations</span>
+            <h2 class="font-serif">Signature Dishes from the Hearth</h2>
+            <p class="section-subtitle">A curated selection of our most celebrated dishes, prepared strictly to authentic recipes.</p>
+          </div>
+          <div>
+            <a href="menu.html" class="btn btn-outline">View Full Repertoire →</a>
+          </div>
+        </div>
+
+        <div class="grid grid-4 gap-4" id="home-featured-grid">
+          <!-- Populated dynamically from storage so changes in admin appear here! -->
+        </div>
+      </div>
+    </section>
+
+    <!-- The Srestaurents Story Split Section -->
+    <section class="section section-bg-subtle">
+      <div class="container story-split-grid">
+        <div class="story-media-stack">
+          <img src="assets/images/restaurant_interior.jpg" alt="Atmospheric candle-lit interior dining room of Srestaurents" class="story-img-main">
+          <div class="story-quote-card">
+            <div class="story-quote-text">
+              "True Indian hospitality is not hurried. We believe good food asks for patience, good fire, and genuine care."
+            </div>
+            <div class="story-quote-author">Master Chef Vikramaditya</div>
+          </div>
+        </div>
+
+        <div class="story-content">
+          <span class="section-tag">Culinary Ethos</span>
+          <h2 class="font-serif">No shortcuts. No artificial colors. Only slow craftsmanship.</h2>
+          <p>
+            Srestaurents was envisioned as an antidote to fast-casual dining. We take inspiration from the historic royal kitchens of Awadh and Hyderabad, where food was treated as an art form of aromatic balance.
+          </p>
+          <p>
+            Our Dal Makhani simmers uninterrupted for 24 hours on gentle charcoal. Our biryanis are sealed with stone-ground whole wheat dough to trap the steam within the clay pot. And our Pan-Asian wok dishes bring sharp, vibrant counterpoints to the rich Indian gravies.
+          </p>
+
+          <div class="story-pillars">
+            <div class="story-pillar-item">
+              <div class="story-pillar-label">A2 Bilona Ghee</div>
+              <div class="story-pillar-text">Cultured farm butter slow-churned in earthen vats for pure fragrance.</div>
+            </div>
+            <div class="story-pillar-item">
+              <div class="story-pillar-label">Tellicherry Peppercorn</div>
+              <div class="story-pillar-text">Single-origin mountain spices ground fresh daily on traditional sil-batta.</div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <a href="about.html" class="btn btn-primary">Read Our Full Story →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seasonal Curated Offers -->
+    <section class="section section-sm">
+      <div class="container">
+        <div class="offers-banner">
+          <div>
+            <span class="badge badge-warning mb-2">Presentation Demo Special</span>
+            <h3 class="font-serif">Enjoy 20% savings on your mock royal feast</h3>
+            <p class="text-sm text-muted m-0">Use demo promo code <strong>FEAST20</strong> at checkout on orders above ₹750.</p>
+          </div>
+          <div class="flex-align-center gap-3">
+            <div class="offer-code-pill">
+              <span>🏷️</span>
+              <span>FEAST20</span>
+            </div>
+            <a href="menu.html" class="btn btn-secondary btn-sm">Use Code Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Booking Teaser -->
+    <section class="section">
+      <div class="container">
+        <div class="booking-cta-box">
+          <span class="badge badge-chef mb-3">Intimate Dining &amp; Courtyard</span>
+          <h2 class="font-serif">Reserve your table for an evening to remember</h2>
+          <p>
+            Whether an anniversary celebration in our heritage courtyard or a quiet business dinner in our private salon, we ensure personalized attention for every guest.
+          </p>
+          <div class="flex-center gap-3 flex-wrap">
+            <a href="reservations.html" class="btn btn-secondary btn-lg">Book Table Online →</a>
+            <a href="contact.html" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">View Opening Hours</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location & Opening Hours -->
+    <section class="section section-bg-subtle">
+      <div class="container location-hours-grid">
+        <div>
+          <span class="section-tag">Visit the Atelier</span>
+          <h2 class="font-serif">An oasis of warmth in Jubilee Hills</h2>
+          <p class="mb-4">
+            Centrally situated on Road No. 36 with complimentary valet parking, lush stone courtyard, and indoor dining suites.
+          </p>
+
+          <div class="info-row">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong class="text-primary">Atelier Address (Demo Placeholder)</strong>
+              <div class="text-sm text-muted">Plot 420, Road No. 36, Jubilee Hills, Hyderabad, Telangana 500033</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong class="text-primary">Concierge &amp; Reservations</strong>
+              <div class="text-sm text-muted">+91 98765 43210 · reservations@srestaurents.demo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-4">
+          <h3 class="font-serif mb-3">Daily Service Hours</h3>
+          <div class="info-row mb-3">
+            <span class="info-icon">☀️</span>
+            <div>
+              <strong>Lunch Service</strong>
+              <div class="text-sm text-muted">12:00 PM – 03:30 PM (Tuesday – Sunday)</div>
+            </div>
+          </div>
+          <div class="info-row mb-3">
+            <span class="info-icon">🌙</span>
+            <div>
+              <strong>Dinner Service</strong>
+              <div class="text-sm text-muted">07:00 PM – 11:30 PM (Tuesday – Sunday)</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">☕</span>
+            <div>
+              <strong>Weekend High Tea &amp; Kebabs</strong>
+              <div class="text-sm text-muted">04:30 PM – 06:30 PM (Saturday &amp; Sunday)</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-top text-xs text-muted">
+            <em>Kitchen resets on Mondays for spice curing and stone-grinding.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Dish Customization Modal (Universal across pages) -->
+  <div class="modal-overlay" id="dish-customize-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-md">
+      <div class="dish-modal-content">
+        <!-- Rendered dynamically by MenuController -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Action Bar -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Bottom Bar">
+    <a href="index.html" class="mobile-bar-item active">
+      <span class="mobile-bar-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="menu.html" class="mobile-bar-item">
+      <span class="mobile-bar-icon">🍽️</span>
+      <span>Menu</span>
+    </a>
+    <a href="order.html" class="mobile-bar-item">
+      <span class="mobile-bar-icon">🧺</span>
+      <span>Basket</span>
+    </a>
+    <a href="reservations.html" class="mobile-bar-item">
+      <span class="mobile-bar-icon">📅</span>
+      <span>Reserve</span>
+    </a>
+  </nav>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-wordmark">
+          <span class="brand-name">Srestaurents</span>
+          <span class="brand-subtext">Culinary Atelier · India</span>
+        </a>
+        <p class="footer-brand-p">
+          A multi-cuisine culinary exploration honoring ancient Awadhi dum pukht, clay tandoor grills, and contemporary pan-Asian delicacies.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Explore</h4>
+        <ul class="footer-links-list">
+          <li><a href="menu.html">Full Menu Repertoire</a></li>
+          <li><a href="about.html">Our Story &amp; Philosophy</a></li>
+          <li><a href="reservations.html">Book a Table</a></li>
+          <li><a href="order.html">Online Order Basket</a></li>
+          <li><a href="track-order.html">Track Existing Order</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Guest Services</h4>
+        <ul class="footer-links-list">
+          <li><a href="account.html">Guest Profile &amp; History</a></li>
+          <li><a href="contact.html">Private Dining Inquiries</a></li>
+          <li><a href="contact.html">Valet &amp; Location</a></li>
+          <li><a href="admin/index.html">Team Admin Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Demonstration Prototype</h4>
+        <p class="text-xs text-muted mb-3">
+          This website is an interactive front-end prototype. All menu dishes, orders, mock payments, and table bookings are stored locally in browser localStorage for evaluation.
+        </p>
+        <div class="mt-2">
+          <a href="admin/index.html" class="btn btn-outline btn-sm" style="color: #FFFFFF; border-color: rgba(255,255,255,0.3);">
+            Open Admin Dashboard ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>&copy; 2026 Srestaurents. Designed as a presentation demonstration prototype.</div>
+      <div class="flex-align-center gap-3">
+        <a href="admin/index.html">Demo Admin</a>
+        <a href="#" id="footer-reset-btn" onclick="event.preventDefault(); document.getElementById('global-reset-demo-btn').click();">Reset Data</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
+  <script>
+    // Initialize Homepage specific features
+    document.addEventListener('DOMContentLoaded', () => {
+      // Render 4 featured dishes in homepage grid
+      const grid = document.getElementById('home-featured-grid');
+      if (grid) {
+        const menu = StorageService.getMenu();
+        const featured = menu.filter(d => d.featured).slice(0, 4);
+        const favs = StorageService.getFavorites();
+
+        grid.innerHTML = featured.map(dish => {
+          const isFav = favs.includes(dish.id);
+          return `
+            <article class="dish-card" data-dish-id="${dish.id}">
+              <div class="dish-card-media">
+                <img src="${dish.image}" alt="${escapeHtml(dish.name)}" class="dish-card-img" loading="lazy">
+                <div class="dish-media-overlay">
+                  <span class="dietary-marker dietary-${dish.dietary}">
+                    <span class="dietary-symbol"></span>
+                  </span>
+                  ${dish.chefSpecial ? `<span class="badge badge-chef">Chef's Signature</span>` : ''}
+                  <button class="btn-fav ${isFav ? 'is-fav' : ''}" data-fav-id="${dish.id}" title="Save to favorites">
+                    <span class="fav-heart">${isFav ? '♥' : '♡'}</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="dish-card-body">
+                <div class="dish-meta-row">
+                  <span class="dish-spice-tag text-xs">${dish.spiceLevel.toUpperCase()} SPICE</span>
+                  ${dish.servingSize ? `<span class="dish-portion text-xs text-muted">${escapeHtml(dish.servingSize)}</span>` : ''}
+                </div>
+
+                <h3 class="dish-title font-serif">
+                  <a href="dish.html?id=${dish.id}" class="dish-title-link">${escapeHtml(dish.name)}</a>
+                </h3>
+
+                <p class="dish-desc text-muted">${escapeHtml(dish.shortDescription || dish.description)}</p>
+
+                <div class="dish-card-footer">
+                  <div class="dish-price-block">
+                    <span class="dish-price font-serif">${formatCurrency(dish.price)}</span>
+                  </div>
+                  <button class="btn btn-outline btn-sm btn-customize" data-open-dish="${dish.id}">
+                    Customize +
+                  </button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        // Attach modal trigger to customize buttons
+        grid.querySelectorAll('[data-open-dish]').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const dishId = btn.getAttribute('data-open-dish');
+            MenuController.openDishModal(dishId);
+          });
+        });
+
+        // Attach favorite buttons
+        grid.querySelectorAll('[data-fav-id]').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const dishId = btn.getAttribute('data-fav-id');
+            StorageService.toggleFavorite(dishId);
+            const isNowFav = StorageService.getFavorites().includes(dishId);
+            btn.classList.toggle('is-fav', isNowFav);
+            btn.querySelector('.fav-heart').textContent = isNowFav ? '♥' : '♡';
+            showToast(isNowFav ? 'Saved to favourite dishes' : 'Removed from favourites', 'info');
+          });
+        });
+      }
+
+      // Initialize MenuController for modal handling
+      MenuController.setupModal();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dish Details — Srestaurents | Artisanal Multi-Cuisine Atelier</title>
+  <meta name="description" content="In-depth culinary provenance, tasting notes, and customization for signature dishes at Srestaurents.">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Demo Banner -->
+  <aside class="demo-banner">
+    <div class="demo-banner-content">
+      <div class="flex-align-center gap-2">
+        <span class="demo-banner-badge">Presentation Prototype</span>
+        <span>Interactive dish details view. All orders are stored in browser localStorage.</span>
+      </div>
+      <div class="demo-banner-links">
+        <a href="menu.html">← Back to Menu</a>
+        <a href="admin/menu.html">Admin Menu ↗</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-wordmark">
+        <span class="brand-name">Srestaurents</span>
+        <span class="brand-subtext">Culinary Atelier · India</span>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link active">Menu</a>
+        <a href="about.html" class="nav-link">Our Story</a>
+        <a href="reservations.html" class="nav-link">Reservations</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="order.html" class="cart-icon-btn" title="View Order Basket">
+          <span class="cart-icon-symbol">🧺</span>
+          <span class="cart-badge is-empty">0</span>
+        </a>
+        <a href="menu.html" class="btn btn-outline btn-sm">Full Menu</a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Nav Drawer -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="brand-wordmark">
+        <span class="brand-name">Srestaurents</span>
+        <span class="brand-subtext">Culinary Atelier</span>
+      </div>
+      <button class="modal-close" id="mobile-nav-close">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="menu.html" class="mobile-nav-link active">Full Menu</a></li>
+      <li><a href="reservations.html" class="mobile-nav-link">Book Table</a></li>
+      <li><a href="order.html" class="mobile-nav-link">Order Basket</a></li>
+      <li><a href="account.html" class="mobile-nav-link">Guest Account</a></li>
+    </ul>
+  </aside>
+
+  <main class="section">
+    <div class="container" id="dish-detail-container">
+      <!-- Populated dynamically by script below -->
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Action Bar -->
+  <nav class="mobile-bottom-bar">
+    <a href="index.html" class="mobile-bar-item">
+      <span class="mobile-bar-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="menu.html" class="mobile-bar-item active">
+      <span class="mobile-bar-icon">🍽️</span>
+      <span>Menu</span>
+    </a>
+    <a href="order.html" class="mobile-bar-item">
+      <span class="mobile-bar-icon">🧺</span>
+      <span>Basket</span>
+    </a>
+    <a href="reservations.html" class="mobile-bar-item">
+      <span class="mobile-bar-icon">📅</span>
+      <span>Reserve</span>
+    </a>
+  </nav>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 Srestaurents. Presentation Prototype.</div>
+      <div class="flex-align-center gap-3">
+        <a href="menu.html">Return to Menu</a>
+        <a href="admin/index.html">Demo Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('dish-detail-container');
+      const urlParams = new URLSearchParams(window.location.search);
+      const dishId = urlParams.get('id') || 'dish-awadhi-biryani';
+
+      const dish = StorageService.getDishById(dishId);
+      if (!dish) {
+        container.innerHTML = `
+          <div class="card p-5 text-center">
+            <h2 class="font-serif">Dish Not Found</h2>
+            <p class="text-muted">The requested sample recipe could not be located.</p>
+            <a href="menu.html" class="btn btn-primary mt-3">Back to Menu Repertoire</a>
+          </div>
+        `;
+        return;
+      }
+
+      // State for configuration
+      let selectedVariantId = (dish.variants && dish.variants[0]) ? dish.variants[0].id : null;
+      let selectedAddOnIds = [];
+      let quantity = 1;
+
+      const render = () => {
+        let unitPrice = dish.price;
+        if (dish.variants && selectedVariantId) {
+          const v = dish.variants.find(item => item.id === selectedVariantId);
+          if (v) unitPrice += (v.priceDiff || 0);
+        }
+        if (dish.addOns && selectedAddOnIds.length > 0) {
+          selectedAddOnIds.forEach(id => {
+            const a = dish.addOns.find(item => item.id === id);
+            if (a) unitPrice += (a.price || 0);
+          });
+        }
+        const totalPrice = unitPrice * quantity;
+
+        container.innerHTML = `
+          <!-- Breadcrumb -->
+          <nav class="mb-4 text-xs text-muted">
+            <a href="index.html">Home</a> / <a href="menu.html">Menu</a> / <span class="capitalize">${dish.category}</span> / <strong class="text-primary">${escapeHtml(dish.name)}</strong>
+          </nav>
+
+          <div class="grid grid-2 gap-4 align-start">
+            <!-- Left: Imagery & Provenance -->
+            <div>
+              <div class="card overflow-hidden mb-4">
+                <img src="${dish.image}" alt="${escapeHtml(dish.name)}" style="width: 100%; height: 440px; object-fit: cover;">
+              </div>
+
+              <!-- Culinary Provenance Card -->
+              <div class="card p-4 mb-4">
+                <h4 class="font-serif mb-2">Provenance &amp; Craftsmanship</h4>
+                <p class="text-sm text-muted mb-3">${escapeHtml(dish.story || dish.description)}</p>
+
+                ${dish.ingredients && dish.ingredients.length > 0 ? `
+                  <div class="border-top pt-3 mt-3">
+                    <span class="text-xs uppercase font-mono font-bold text-muted block mb-2">Hero Ingredients</span>
+                    <div class="flex-wrap gap-1">
+                      ${dish.ingredients.map(ing => `<span class="badge badge-neutral text-xs">${escapeHtml(ing)}</span>`).join(' ')}
+                    </div>
+                  </div>
+                ` : ''}
+
+                ${dish.allergens && dish.allergens.length > 0 ? `
+                  <div class="border-top pt-3 mt-3 text-xs text-muted">
+                    <strong>Allergen Notice:</strong> Contains ${dish.allergens.join(', ')}.
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Right: Details & Interactive Ordering Configuration -->
+            <div>
+              <div class="card p-4">
+                <div class="flex-between align-center mb-2">
+                  <div class="flex-align-center gap-2">
+                    <span class="dietary-marker dietary-${dish.dietary}">
+                      <span class="dietary-symbol"></span>
+                    </span>
+                    <span class="text-xs font-mono text-accent uppercase font-bold">${dish.spiceLevel} SPICE</span>
+                  </div>
+                  ${dish.chefSpecial ? `<span class="badge badge-chef">Chef's Signature</span>` : ''}
+                </div>
+
+                <h1 class="font-serif text-3xl mb-1">${escapeHtml(dish.name)}</h1>
+                <div class="font-serif text-2xl font-bold text-primary mb-3">${formatCurrency(dish.price)}</div>
+
+                <p class="text-muted text-sm mb-4">${escapeHtml(dish.description)}</p>
+
+                <div class="grid grid-3 gap-2 p-3 bg-subtle rounded mb-4 text-center">
+                  <div>
+                    <span class="text-xs text-muted block">Serving Size</span>
+                    <strong class="text-xs">${escapeHtml(dish.servingSize || 'Serves 2')}</strong>
+                  </div>
+                  <div>
+                    <span class="text-xs text-muted block">Prep Time</span>
+                    <strong class="text-xs">${escapeHtml(dish.preparationTime || '20 mins')}</strong>
+                  </div>
+                  <div>
+                    <span class="text-xs text-muted block">Energy</span>
+                    <strong class="text-xs">${escapeHtml(dish.calories || '450 kcal')}</strong>
+                  </div>
+                </div>
+
+                <!-- Variants Selection -->
+                ${dish.variants && dish.variants.length > 0 ? `
+                  <div class="mb-4">
+                    <label class="modal-section-title">Select Serving Option</label>
+                    <div class="variant-options-list">
+                      ${dish.variants.map(v => `
+                        <label class="variant-option-card ${selectedVariantId === v.id ? 'is-selected' : ''}">
+                          <input type="radio" name="page_variant" value="${v.id}" ${selectedVariantId === v.id ? 'checked' : ''}>
+                          <span class="variant-name">${escapeHtml(v.name)}</span>
+                          <span class="variant-price">${v.priceDiff > 0 ? `+${formatCurrency(v.priceDiff)}` : 'Included'}</span>
+                        </label>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
+
+                <!-- Add-ons Selection -->
+                ${dish.addOns && dish.addOns.length > 0 ? `
+                  <div class="mb-4">
+                    <label class="modal-section-title">Accompaniments &amp; Add-ons</label>
+                    <div class="addon-options-list">
+                      ${dish.addOns.map(a => `
+                        <label class="addon-option-card ${selectedAddOnIds.includes(a.id) ? 'is-selected' : ''}">
+                          <input type="checkbox" name="page_addon" value="${a.id}" ${selectedAddOnIds.includes(a.id) ? 'checked' : ''}>
+                          <span class="addon-name">${escapeHtml(a.name)}</span>
+                          <span class="addon-price">+${formatCurrency(a.price)}</span>
+                        </label>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
+
+                <!-- Special Instructions -->
+                <div class="form-group mb-4">
+                  <label class="form-label">Special Cooking Instructions</label>
+                  <input type="text" id="page-instructions" class="form-input" placeholder="e.g. Mild spice, crisp tandoor char...">
+                </div>
+
+                <!-- Action Bar -->
+                <div class="modal-footer-action">
+                  <div class="qty-stepper qty-stepper-lg">
+                    <button class="qty-btn" id="page-qty-dec">−</button>
+                    <span class="qty-val">${quantity}</span>
+                    <button class="qty-btn" id="page-qty-inc">+</button>
+                  </div>
+
+                  <button class="btn btn-primary btn-lg flex-1" id="page-add-to-cart-btn" ${!dish.available ? 'disabled' : ''}>
+                    ${dish.available ? `Add to Order Basket • ${formatCurrency(totalPrice)}` : 'Sold Out Today'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Event listeners
+        container.querySelectorAll('input[name="page_variant"]').forEach(radio => {
+          radio.addEventListener('change', (e) => {
+            selectedVariantId = e.target.value;
+            render();
+          });
+        });
+
+        container.querySelectorAll('input[name="page_addon"]').forEach(cb => {
+          cb.addEventListener('change', (e) => {
+            if (e.target.checked) {
+              if (!selectedAddOnIds.includes(e.target.value)) selectedAddOnIds.push(e.target.value);
+            } else {
+              selectedAddOnIds = selectedAddOnIds.filter(id => id !== e.target.value);
+            }
+            render();
+          });
+        });
+
+        container.querySelector('#page-qty-dec')?.addEventListener('click', () => {
+          if (quantity > 1) {
+            quantity--;
+            render();
+          }
+        });
+
+        container.querySelector('#page-qty-inc')?.addEventListener('click', () => {
+          if (quantity < 15) {
+            quantity++;
+            render();
+          }
+        });
+
+        container.querySelector('#page-add-to-cart-btn')?.addEventListener('click', () => {
+          const notes = document.getElementById('page-instructions')?.value.trim() || '';
+          CartService.addItem(dish.id, selectedVariantId, selectedAddOnIds, notes, quantity);
+          showToast(`Added ${quantity}× ${dish.name} to your basket!`, 'success');
+        });
+      };
+
+      render();
+    });
+  </script>
+</body>
+</html>

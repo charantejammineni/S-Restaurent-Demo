@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Orders Console — Srestaurents Admin</title>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <div class="admin-brand-title font-serif">Srestaurents</div>
+      <div class="admin-brand-tag">Operations Console · Demo</div>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="index.html" class="admin-nav-item">
+        <span class="admin-nav-icon">📊</span>
+        <span>Overview Dashboard</span>
+      </a>
+      <a href="menu.html" class="admin-nav-item">
+        <span class="admin-nav-icon">🍽️</span>
+        <span>Menu Management</span>
+      </a>
+      <a href="orders.html" class="admin-nav-item active">
+        <span class="admin-nav-icon">🧾</span>
+        <span>Live Orders Console</span>
+      </a>
+      <a href="reservations.html" class="admin-nav-item">
+        <span class="admin-nav-icon">📅</span>
+        <span>Table Bookings</span>
+      </a>
+      <a href="settings.html" class="admin-nav-item">
+        <span class="admin-nav-icon">⚙️</span>
+        <span>Restaurant Settings</span>
+      </a>
+      <div class="border-top my-2 pt-2" style="border-color: rgba(255,255,255,0.1);"></div>
+      <a href="../track-order.html" class="admin-nav-item" target="_blank">
+        <span class="admin-nav-icon">📍</span>
+        <span>Customer Tracker ↗</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <div>Demo Environment</div>
+      <div class="text-xs text-muted">Real-time status transitions</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <div>
+        <h1 class="admin-topbar-title">Live Orders &amp; Dispatch Console</h1>
+        <div class="text-xs text-muted">Manage active kitchen dockets and advance preparation milestones</div>
+      </div>
+
+      <div class="admin-topbar-actions">
+        <button class="btn btn-sm btn-outline" onclick="window.location.reload()">
+          ↻ Refresh Dockets
+        </button>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <!-- Filter Bar -->
+      <div class="admin-filter-bar mb-4">
+        <button class="admin-filter-btn active" data-order-filter="all">All Dockets</button>
+        <button class="admin-filter-btn" data-order-filter="placed">Placed (New)</button>
+        <button class="admin-filter-btn" data-order-filter="preparing">Simmering in Kitchen</button>
+        <button class="admin-filter-btn" data-order-filter="out-for-delivery">Out for Delivery / Ready</button>
+        <button class="admin-filter-btn" data-order-filter="completed">Completed</button>
+        <button class="admin-filter-btn" data-order-filter="cancelled">Cancelled</button>
+      </div>
+
+      <!-- Orders List Container (Pre-rendered for immediate view, hydrated dynamically) -->
+      <div id="admin-orders-list">
+        <!-- Order Docket 1 -->
+        <div class="card p-4 mb-3 admin-order-card" data-order-id="SR-2026-9042">
+          <div class="flex-between align-center flex-wrap gap-2 pb-3 border-bottom mb-3">
+            <div>
+              <span class="text-xs text-muted uppercase font-mono">Docket</span>
+              <strong class="font-mono text-base ml-1">#SR-2026-9042</strong>
+              <span class="badge badge-info ml-2">preparing</span>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-semibold font-serif text-primary">₹2,014.25</span>
+              <span class="text-xs text-muted font-mono block">Paid (Demo Simulation)</span>
+            </div>
+          </div>
+
+          <div class="grid grid-2 gap-4 mb-3">
+            <div>
+              <div class="text-xs text-muted uppercase font-bold mb-1">Customer &amp; Service</div>
+              <strong>Aarav Sharma</strong> · +91 98450 11223
+              <div class="text-xs text-muted mt-1">
+                🛵 Delivery: Flat 402, Royal Palms Residency, Road No. 10, Banjara Hills, Hyderabad
+              </div>
+              <div class="text-xs italic text-muted mt-1">"Please do not ring the bell, leave with security gate."</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold mb-1">Itemized Kitchen Order</div>
+              <ul class="text-xs m-0 pl-3" style="line-height: 1.6;">
+                <li><strong>2×</strong> Awadhi Murgh Dum Biryani (Regular Handi) + Smoked Burani Garlic Raita</li>
+                <li><strong>1×</strong> 24-Hour Slow-Cooked Dal Makhani (Classic Bowl)</li>
+                <li><strong>2×</strong> Artisanal Truffle &amp; Garlic Naan Basket</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex-between align-center flex-wrap gap-2 pt-2 border-top">
+            <div class="text-xs text-muted font-mono">
+              Created: 18:15 PM · Promo FEAST20 Applied (-₹250)
+            </div>
+
+            <div class="admin-order-status-stepper flex-align-center gap-2">
+              <label class="text-xs text-muted">Update Status:</label>
+              <select class="form-select form-select-sm order-status-select" data-id="SR-2026-9042">
+                <option value="placed">1. Placed</option>
+                <option value="confirmed">2. Confirmed</option>
+                <option value="preparing" selected>3. Preparing</option>
+                <option value="out-for-delivery">4. Out / Ready</option>
+                <option value="completed">5. Completed</option>
+                <option value="cancelled">✕ Cancelled</option>
+              </select>
+              <a href="../track-order.html?id=SR-2026-9042" target="_blank" class="btn btn-sm btn-outline">Live View ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Docket 2 -->
+        <div class="card p-4 mb-3 admin-order-card" data-order-id="SR-2026-8814">
+          <div class="flex-between align-center flex-wrap gap-2 pb-3 border-bottom mb-3">
+            <div>
+              <span class="text-xs text-muted uppercase font-mono">Docket</span>
+              <strong class="font-mono text-base ml-1">#SR-2026-8814</strong>
+              <span class="badge badge-secondary ml-2">out-for-delivery</span>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-semibold font-serif text-primary">₹791.00</span>
+              <span class="text-xs text-muted font-mono block">Pending at Counter</span>
+            </div>
+          </div>
+
+          <div class="grid grid-2 gap-4 mb-3">
+            <div>
+              <div class="text-xs text-muted uppercase font-bold mb-1">Customer &amp; Service</div>
+              <strong>Priya Patel</strong> · +91 97110 33445
+              <div class="text-xs text-muted mt-1">
+                🛍️ Curbside Takeaway Pickup · Pickup slot: 19:45 PM
+              </div>
+              <div class="text-xs italic text-muted mt-1">"Will pick up in car, call when ready curbside."</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold mb-1">Itemized Kitchen Order</div>
+              <ul class="text-xs m-0 pl-3" style="line-height: 1.6;">
+                <li><strong>1×</strong> Angara Paneer Tikka (Classic Angara Spiced) + Anardana Mint Chutney Jar</li>
+                <li><strong>1×</strong> Warm Shahi Gulab Jamun &amp; Rose Rabri (Royal Duo)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex-between align-center flex-wrap gap-2 pt-2 border-top">
+            <div class="text-xs text-muted font-mono">
+              Created: 17:30 PM · Promo SREST50 Applied (-₹50)
+            </div>
+
+            <div class="admin-order-status-stepper flex-align-center gap-2">
+              <label class="text-xs text-muted">Update Status:</label>
+              <select class="form-select form-select-sm order-status-select" data-id="SR-2026-8814">
+                <option value="placed">1. Placed</option>
+                <option value="confirmed">2. Confirmed</option>
+                <option value="preparing">3. Preparing</option>
+                <option value="out-for-delivery" selected>4. Ready for Pickup</option>
+                <option value="completed">5. Completed</option>
+                <option value="cancelled">✕ Cancelled</option>
+              </select>
+              <a href="../track-order.html?id=SR-2026-8814" target="_blank" class="btn btn-sm btn-outline">Live View ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Docket 3 -->
+        <div class="card p-4 mb-3 admin-order-card" data-order-id="SR-2026-7490">
+          <div class="flex-between align-center flex-wrap gap-2 pb-3 border-bottom mb-3">
+            <div>
+              <span class="text-xs text-muted uppercase font-mono">Docket</span>
+              <strong class="font-mono text-base ml-1">#SR-2026-7490</strong>
+              <span class="badge badge-success ml-2">completed</span>
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-semibold font-serif text-primary">₹851.50</span>
+              <span class="text-xs text-muted font-mono block">Completed (Demo COD)</span>
+            </div>
+          </div>
+
+          <div class="grid grid-2 gap-4 mb-3">
+            <div>
+              <div class="text-xs text-muted uppercase font-bold mb-1">Customer &amp; Service</div>
+              <strong>Vikram Malhotra</strong> · +91 99880 77665
+              <div class="text-xs text-muted mt-1">
+                🛵 Delivery: Villa 12, Boulder Hills Golf County, Gachibowli, Hyderabad
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs text-muted uppercase font-bold mb-1">Itemized Kitchen Order</div>
+              <ul class="text-xs m-0 pl-3" style="line-height: 1.6;">
+                <li><strong>1×</strong> Slow-Braised Kashmiri Rogan Josh + Saffron Sheermal Sweet Bread</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex-between align-center flex-wrap gap-2 pt-2 border-top">
+            <div class="text-xs text-muted font-mono">
+              Created: 13:00 PM · Handed over warm to guest
+            </div>
+
+            <div class="admin-order-status-stepper flex-align-center gap-2">
+              <label class="text-xs text-muted">Update Status:</label>
+              <select class="form-select form-select-sm order-status-select" data-id="SR-2026-7490">
+                <option value="placed">1. Placed</option>
+                <option value="confirmed">2. Confirmed</option>
+                <option value="preparing">3. Preparing</option>
+                <option value="out-for-delivery">4. Out / Ready</option>
+                <option value="completed" selected>5. Completed</option>
+                <option value="cancelled">✕ Cancelled</option>
+              </select>
+              <a href="../track-order.html?id=SR-2026-7490" target="_blank" class="btn btn-sm btn-outline">Live View ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        if (typeof StorageService !== 'undefined') {
+          StorageService.initDefaults();
+        }
+        if (typeof AdminController !== 'undefined') {
+          AdminController.initOrdersPage();
+        }
+      } catch (e) {
+        console.warn('Orders admin init warning:', e);
+      }
+    });
+  </script>
+</body>
+</html>
