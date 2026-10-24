@@ -145,21 +145,6 @@
             <a href="menu.html" class="btn btn-primary btn-lg">Explore Our Menu →</a>
             <a href="reservations.html" class="btn btn-outline btn-lg">Book a Table</a>
           </div>
-
-          <div class="hero-features-bar">
-            <div class="hero-feat-item">
-              <span class="hero-feat-icon">🍲</span>
-              <span>24-Hour Charcoal Simmer</span>
-            </div>
-            <div class="hero-feat-item">
-              <span class="hero-feat-icon">🌿</span>
-              <span>Cold-Pressed Ghee &amp; Spices</span>
-            </div>
-            <div class="hero-feat-item">
-              <span class="hero-feat-icon">🛵</span>
-              <span>Insulated Gourmet Delivery</span>
-            </div>
-          </div>
         </div>
 
         <div class="hero-media-wrapper">
@@ -174,47 +159,36 @@
       </div>
     </section>
 
-    <!-- The Royal Degustation Centerpiece — Interactive Haute-Cuisine Showcase -->
+    <!-- The Royal Degustation Atelier — Compact 5-Dish Mandala (Zero Multi-Scroll) -->
     <section class="section menu-showcase-section" id="signatures-section">
       <div class="container">
-        <!-- Section Header Row with Category Filters & Explore Full Menu CTA -->
-        <div class="showcase-header">
-          <div class="showcase-header-left">
+        <!-- Compact Section Header with Integrated Category Filter & Explore Button -->
+        <div class="showcase-compact-header">
+          <div class="showcase-title-wrap">
             <span class="section-tag">Chef's Signature Repertoire</span>
             <h2 class="font-serif showcase-main-title">The Royal Degustation Experience</h2>
-            <p class="showcase-subtitle">An interactive journey through our slow-crafted Awadhi masterpieces. Select any creation to discover its culinary heritage.</p>
           </div>
 
-          <div class="showcase-header-right">
-            <a href="menu.html" class="btn btn-primary menu-explore-btn">
-              Explore Complete 28-Dish Menu →
+          <!-- Filter Pills & Full Menu Button in one neat row -->
+          <div class="showcase-header-actions">
+            <div class="showcase-filter-pills" id="degustation-filters">
+              <button class="showcase-pill-btn active" data-filter="all">All Signatures</button>
+              <button class="showcase-pill-btn" data-filter="biryani">Biryani</button>
+              <button class="showcase-pill-btn" data-filter="curries">Slow Curries</button>
+              <button class="showcase-pill-btn" data-filter="starters">Clay Tandoor</button>
+              <button class="showcase-pill-btn" data-filter="desserts">Desserts</button>
+            </div>
+
+            <a href="menu.html" class="btn btn-primary btn-sm menu-explore-btn">
+              Full Menu (28) →
             </a>
           </div>
         </div>
 
-        <!-- Category Filter Bar -->
-        <div class="showcase-filter-bar">
-          <div class="showcase-filter-pills" id="degustation-filters">
-            <button class="showcase-pill-btn active" data-filter="all">All Signatures</button>
-            <button class="showcase-pill-btn" data-filter="biryani">Royal Biryani</button>
-            <button class="showcase-pill-btn" data-filter="curries">Slow Curries</button>
-            <button class="showcase-pill-btn" data-filter="starters">Clay Tandoor</button>
-            <button class="showcase-pill-btn" data-filter="desserts">Sweet Confections</button>
-          </div>
-        </div>
-
-        <!-- Interactive Course Stepper Rail (Not cards! Compact brass course medallions) -->
-        <div class="course-stepper-rail" id="course-stepper-rail">
-          <!-- Dynamically populated course tabs -->
-        </div>
-
-        <!-- Single Imperial Tasting Stage (ZERO side-by-side cards) -->
+        <!-- The Compact 5-Dish Imperial Stage (Landscape 2-Column layout, zero multi-scroll) -->
         <div class="imperial-stage-wrapper" id="imperial-stage-wrapper">
-          <button class="imperial-nav-btn imperial-nav-prev" id="stage-prev-btn" aria-label="Previous Royal Course" title="Previous Course (Left Arrow)">
-            <span>←</span>
-          </button>
-
           <div class="imperial-stage" id="imperial-stage">
+            <!-- Filigree Corner Ornaments -->
             <div class="stage-filigree-corners">
               <span class="filigree top-left"></span>
               <span class="filigree top-right"></span>
@@ -222,59 +196,103 @@
               <span class="filigree bottom-right"></span>
             </div>
 
-            <!-- Platter Centerpiece Area -->
-            <div class="stage-platter-area">
-              <div class="platter-glow-ring"></div>
-              <div class="platter-brass-frame" id="platter-brass-frame" title="Click to view recipe details">
-                <img id="stage-dish-img" src="assets/images/biryani_awadhi.jpg" alt="Dish photo" class="stage-dish-img">
-              </div>
-              <div class="platter-badge platter-badge-dietary" id="stage-dietary-badge">
-                <span class="dietary-marker dietary-non-veg"><span class="dietary-symbol"></span></span>
-              </div>
-              <div class="platter-badge platter-badge-royal" id="stage-royal-badge">
-                👑 Chef's Signature
-              </div>
-              <button class="platter-fav-btn" id="stage-fav-btn" title="Save to favorites">
-                <span class="fav-icon">♡</span>
-              </button>
-            </div>
+            <!-- Stage Grid: Left = 5-Dish Radial Mandala; Right = Tasting Notes & Order CTA -->
+            <div class="stage-landscape-grid">
+              <!-- Left Column: The 5-Dish Royal Degustation Mandala (1 Hero + 4 Outer Satellites) -->
+              <div class="degustation-mandala" id="degustation-mandala">
+                <!-- Concentric Golden Orbit Rings -->
+                <div class="mandala-orbit-ring ring-outer"></div>
+                <div class="mandala-orbit-ring ring-inner"></div>
 
-            <!-- Content Area -->
-            <div class="stage-content-area">
-              <div class="stage-course-num" id="stage-course-num">COURSE 01 OF 06 · SLOW-STEAMED DUM</div>
-              <h3 class="stage-dish-title font-serif" id="stage-dish-title">Awadhi Murgh Dum Biryani</h3>
+                <!-- 4 Satellite Tasting Platters (NW, NE, SW, SE) -->
+                <!-- Satellite 1: Top-Left (NW) -->
+                <button class="mandala-satellite satellite-nw" data-satellite-pos="1" id="satellite-1" title="Click to focus on this creation">
+                  <img src="assets/images/dal_makhani.jpg" alt="" class="satellite-img" id="satellite-img-1">
+                  <span class="satellite-tag" id="satellite-tag-1">Dal Makhani</span>
+                </button>
 
-              <!-- Interactive Tab Switcher -->
-              <div class="stage-tab-switcher" id="stage-tab-switcher">
-                <button class="stage-tab-btn active" data-tab="story">📜 Tasting Story</button>
-                <button class="stage-tab-btn" data-tab="spices">🌿 Secret Spices</button>
-                <button class="stage-tab-btn" data-tab="vessel">🏺 Vessel &amp; Pairing</button>
+                <!-- Satellite 2: Top-Right (NE) -->
+                <button class="mandala-satellite satellite-ne" data-satellite-pos="2" id="satellite-2" title="Click to focus on this creation">
+                  <img src="assets/images/butter_chicken.jpg" alt="" class="satellite-img" id="satellite-img-2">
+                  <span class="satellite-tag" id="satellite-tag-2">Butter Chicken</span>
+                </button>
+
+                <!-- Satellite 3: Bottom-Left (SW) -->
+                <button class="mandala-satellite satellite-sw" data-satellite-pos="3" id="satellite-3" title="Click to focus on this creation">
+                  <img src="assets/images/paneer_tikka.jpg" alt="" class="satellite-img" id="satellite-img-3">
+                  <span class="satellite-tag" id="satellite-tag-3">Paneer Tikka</span>
+                </button>
+
+                <!-- Satellite 4: Bottom-Right (SE) -->
+                <button class="mandala-satellite satellite-se" data-satellite-pos="4" id="satellite-4" title="Click to focus on this creation">
+                  <img src="assets/images/gulab_jamun.jpg" alt="" class="satellite-img" id="satellite-img-4">
+                  <span class="satellite-tag" id="satellite-tag-4">Gulab Jamun</span>
+                </button>
+
+                <!-- Central Hero Platter (Active Focal Masterpiece) -->
+                <div class="mandala-hero-wrap">
+                  <div class="hero-glow-halo"></div>
+                  <div class="mandala-hero-platter" id="mandala-hero-platter" title="Click to customize dish">
+                    <img id="stage-dish-img" src="assets/images/biryani_awadhi.jpg" alt="Active Dish" class="mandala-hero-img">
+                  </div>
+                  <!-- Floating Badges on Central Hero -->
+                  <div class="platter-badge platter-badge-dietary" id="stage-dietary-badge">
+                    <span class="dietary-marker dietary-non-veg"><span class="dietary-symbol"></span></span>
+                  </div>
+                  <div class="platter-badge platter-badge-royal" id="stage-royal-badge">
+                    👑 Chef's Signature
+                  </div>
+                  <button class="platter-fav-btn" id="stage-fav-btn" title="Save to favorites">
+                    <span class="fav-icon">♡</span>
+                  </button>
+                </div>
               </div>
 
-              <!-- Tab Description Content -->
-              <div class="stage-tab-content" id="stage-tab-content">
-                <!-- Dynamically loaded narrative -->
-              </div>
-
-              <!-- Sensory Spec Chips -->
-              <div class="stage-specs-bar" id="stage-specs-bar">
-                <!-- Dynamically loaded chips -->
-              </div>
-
-              <!-- Price & CTA Action Bar -->
-              <div class="stage-action-bar">
-                <div class="stage-price-box">
-                  <span class="stage-price-label">Atelier Price</span>
-                  <span class="stage-price-val font-serif" id="stage-dish-price">₹545</span>
+              <!-- Right Column: Tasting Notes & Direct Order Dashboard -->
+              <div class="stage-dashboard-col">
+                <div class="dashboard-top-row">
+                  <div class="stage-course-num" id="stage-course-num">CREATION 01 OF 05 · SLOW-STEAMED DUM</div>
+                  <div class="stage-nav-pill-group">
+                    <button class="stage-micro-nav" id="stage-prev-btn" title="Previous Course (Left Arrow)" aria-label="Previous Course">‹</button>
+                    <span class="stage-course-counter" id="stage-course-counter">1 / 5</span>
+                    <button class="stage-micro-nav" id="stage-next-btn" title="Next Course (Right Arrow)" aria-label="Next Course">›</button>
+                  </div>
                 </div>
 
-                <div class="stage-cta-group">
-                  <button class="btn btn-primary btn-lg stage-customize-btn" id="stage-customize-btn">
-                    ✨ Customize &amp; Add to Feast +
-                  </button>
-                  <a href="#" class="btn btn-outline stage-recipe-link" id="stage-recipe-link">
-                    View Recipe Page →
-                  </a>
+                <h3 class="stage-dish-title font-serif" id="stage-dish-title">Awadhi Murgh Dum Biryani</h3>
+
+                <!-- Interactive Tab Switcher -->
+                <div class="stage-tab-switcher" id="stage-tab-switcher">
+                  <button class="stage-tab-btn active" data-tab="story">📜 Tasting Story</button>
+                  <button class="stage-tab-btn" data-tab="spices">🌿 Secret Spices</button>
+                  <button class="stage-tab-btn" data-tab="vessel">🏺 Vessel &amp; Pairing</button>
+                </div>
+
+                <!-- Tab Description Content -->
+                <div class="stage-tab-content" id="stage-tab-content">
+                  <!-- Dynamic text -->
+                </div>
+
+                <!-- Sensory Spec Chips -->
+                <div class="stage-specs-bar" id="stage-specs-bar">
+                  <!-- Spice, Duration, Serving -->
+                </div>
+
+                <!-- Price & CTA Action Bar -->
+                <div class="stage-action-bar">
+                  <div class="stage-price-box">
+                    <span class="stage-price-label">Atelier Price</span>
+                    <span class="stage-price-val font-serif" id="stage-dish-price">₹545</span>
+                  </div>
+
+                  <div class="stage-cta-group">
+                    <button class="btn btn-primary stage-customize-btn" id="stage-customize-btn">
+                      ✨ Customize &amp; Add to Feast +
+                    </button>
+                    <a href="#" class="stage-recipe-link-inline" id="stage-recipe-link">
+                      Dish Details →
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -284,16 +302,12 @@
               <div class="stage-timer-progress" id="stage-timer-progress"></div>
             </div>
           </div>
-
-          <button class="imperial-nav-btn imperial-nav-next" id="stage-next-btn" aria-label="Next Royal Course" title="Next Course (Right Arrow)">
-            <span>→</span>
-          </button>
         </div>
 
         <!-- Live Status Hint Bar -->
         <div class="showcase-status-bar">
           <span class="pulse-dot"></span>
-          <span id="showcase-status-hint">The Royal Degustation Stage · Auto-advancing (Hover to pause, click course tabs or use arrow keys)</span>
+          <span id="showcase-status-hint">The Royal Degustation Mandala · 5 dishes featured · Click any outer platter to bring to center</span>
         </div>
       </div>
     </section>
@@ -527,16 +541,16 @@
   <script src="js/cart.js"></script>
   <script src="js/menu.js"></script>
   <script>
-    // Initialize The Royal Degustation Centerpiece
+    // Initialize The Royal Degustation 5-Dish Mandala
     document.addEventListener('DOMContentLoaded', () => {
       const stageWrapper = document.getElementById('imperial-stage-wrapper');
       const stage = document.getElementById('imperial-stage');
-      const stepperRail = document.getElementById('course-stepper-rail');
       const dishImg = document.getElementById('stage-dish-img');
       const dietaryBadge = document.getElementById('stage-dietary-badge');
       const royalBadge = document.getElementById('stage-royal-badge');
       const favBtn = document.getElementById('stage-fav-btn');
       const courseNum = document.getElementById('stage-course-num');
+      const courseCounter = document.getElementById('stage-course-counter');
       const dishTitle = document.getElementById('stage-dish-title');
       const tabSwitcher = document.getElementById('stage-tab-switcher');
       const tabContent = document.getElementById('stage-tab-content');
@@ -549,9 +563,17 @@
       const nextBtn = document.getElementById('stage-next-btn');
       const filterBtns = document.querySelectorAll('#degustation-filters .showcase-pill-btn');
       const statusHint = document.getElementById('showcase-status-hint');
-      const platterFrame = document.getElementById('platter-brass-frame');
+      const heroPlatter = document.getElementById('mandala-hero-platter');
 
-      if (!stage || !stepperRail) return;
+      // 4 Satellite buttons & elements
+      const satellites = [
+        { btn: document.getElementById('satellite-1'), img: document.getElementById('satellite-img-1'), tag: document.getElementById('satellite-tag-1') },
+        { btn: document.getElementById('satellite-2'), img: document.getElementById('satellite-img-2'), tag: document.getElementById('satellite-tag-2') },
+        { btn: document.getElementById('satellite-3'), img: document.getElementById('satellite-img-3'), tag: document.getElementById('satellite-tag-3') },
+        { btn: document.getElementById('satellite-4'), img: document.getElementById('satellite-img-4'), tag: document.getElementById('satellite-tag-4') }
+      ];
+
+      if (!stage || !dishImg) return;
 
       const fullMenu = StorageService.getMenu();
       let signatureDishes = fullMenu.filter(d => d.featured || d.bestseller || d.chefSpecial);
@@ -561,16 +583,21 @@
       let activeList = signatureDishes;
       let activeIndex = 0;
       let activeTab = 'story';
-      let autoTimer = null;
       let progressTimer = null;
       let isPaused = false;
-      const SLIDE_DURATION = 5000;
+      const SLIDE_DURATION = 5500;
       let elapsedMs = 0;
 
       function getCategoryDishes(cat) {
         if (cat === 'all') return signatureDishes;
         const filtered = fullMenu.filter(d => d.category === cat);
-        return filtered.length > 0 ? filtered : signatureDishes;
+        if (filtered.length >= 5) return filtered;
+        // Pad with other signatures if fewer than 5
+        const combined = [...filtered];
+        signatureDishes.forEach(d => {
+          if (!combined.some(c => c.id === d.id)) combined.push(d);
+        });
+        return combined.slice(0, Math.max(5, filtered.length));
       }
 
       function getCategoryLabel(cat) {
@@ -581,31 +608,6 @@
           case 'desserts': return 'SWEET CONFECTION';
           case 'breads': return 'ARTISANAL OVEN BREAD';
           default: return 'ROYAL ATELIER HEARTH';
-        }
-      }
-
-      function renderStepperPills() {
-        stepperRail.innerHTML = activeList.map((dish, idx) => `
-          <button class="course-step-pill ${idx === activeIndex ? 'active' : ''}" data-step-idx="${idx}" title="Explore ${escapeHtml(dish.name)}">
-            <img src="${dish.image}" alt="" class="course-step-thumb">
-            <span class="course-step-num">${String(idx + 1).padStart(2, '0')}</span>
-            <span>${escapeHtml(dish.name.split(' ').slice(0, 3).join(' '))}</span>
-          </button>
-        `).join('');
-
-        stepperRail.querySelectorAll('.course-step-pill').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const idx = parseInt(btn.getAttribute('data-step-idx'), 10);
-            if (idx !== activeIndex) {
-              setCourse(idx, true);
-            }
-          });
-        });
-
-        // Ensure active pill is scrolled into view smoothly
-        const activePill = stepperRail.querySelector('.course-step-pill.active');
-        if (activePill) {
-          activePill.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
         }
       }
 
@@ -623,37 +625,38 @@
           const pairing = dish.addOns && dish.addOns.length > 0
             ? dish.addOns.map(a => a.name).join(', ')
             : 'Artisanal Garlic Naan & Fresh Herb Chutney';
-          return `<div class="tab-fade-in"><strong>Vessel:</strong> ${vesselInfo}.<br><strong>Sommelier Pairing:</strong> Best enjoyed alongside ${escapeHtml(pairing)}.</div>`;
+          return `<div class="tab-fade-in"><strong>Vessel:</strong> ${vesselInfo}.<br><strong>Pairing:</strong> Best enjoyed with ${escapeHtml(pairing)}.</div>`;
         }
         // Default: story
         return `<div class="tab-fade-in">${escapeHtml(dish.story || dish.description || dish.shortDescription)}</div>`;
       }
 
-      function renderCurrentDish(animate = false) {
-        const dish = activeList[activeIndex];
-        if (!dish) return;
+      function renderMandala(animate = false) {
+        const total = activeList.length;
+        const heroDish = activeList[activeIndex];
+        if (!heroDish) return;
 
         if (animate) {
           stage.classList.add('is-transitioning');
         }
 
         setTimeout(() => {
-          // Platter image
-          dishImg.src = dish.image;
-          dishImg.alt = dish.name;
+          // Central Hero Image & Badges
+          dishImg.src = heroDish.image;
+          dishImg.alt = heroDish.name;
 
           // Dietary Badge
           dietaryBadge.innerHTML = `
-            <span class="dietary-marker dietary-${dish.dietary}">
+            <span class="dietary-marker dietary-${heroDish.dietary}">
               <span class="dietary-symbol"></span>
             </span>
           `;
 
           // Royal Badge
-          if (dish.chefSpecial) {
+          if (heroDish.chefSpecial) {
             royalBadge.textContent = "👑 Chef's Signature";
             royalBadge.style.display = 'block';
-          } else if (dish.bestseller) {
+          } else if (heroDish.bestseller) {
             royalBadge.textContent = "⭐ Atelier Bestseller";
             royalBadge.style.display = 'block';
           } else {
@@ -663,67 +666,71 @@
 
           // Favorite Heart
           const favs = StorageService.getFavorites();
-          const isFav = favs.includes(dish.id);
+          const isFav = favs.includes(heroDish.id);
           favBtn.classList.toggle('is-fav', isFav);
           favBtn.querySelector('.fav-icon').textContent = isFav ? '♥' : '♡';
 
+          // 4 Satellite Dishes (4 unique other dishes from activeList)
+          satellites.forEach((sat, satIdx) => {
+            const dishOffset = (activeIndex + satIdx + 1) % total;
+            const satDish = activeList[dishOffset];
+            if (satDish && sat.img && sat.tag) {
+              sat.img.src = satDish.image;
+              sat.img.alt = satDish.name;
+              // Shorten tag for aesthetic fit
+              const shortTitle = satDish.name.split(' ').slice(0, 2).join(' ');
+              sat.tag.textContent = shortTitle;
+              sat.btn.setAttribute('data-target-idx', dishOffset);
+            }
+          });
+
           // Course and Title
-          courseNum.textContent = `COURSE ${String(activeIndex + 1).padStart(2, '0')} OF ${String(activeList.length).padStart(2, '0')} · ${getCategoryLabel(dish.category)}`;
-          dishTitle.textContent = dish.name;
+          courseNum.textContent = `CREATION ${String(activeIndex + 1).padStart(2, '0')} OF ${String(total).padStart(2, '0')} · ${getCategoryLabel(heroDish.category)}`;
+          if (courseCounter) courseCounter.textContent = `${activeIndex + 1} / ${total}`;
+          dishTitle.textContent = heroDish.name;
 
           // Tab Content
-          tabContent.innerHTML = getTabHtml(dish, activeTab);
+          tabContent.innerHTML = getTabHtml(heroDish, activeTab);
 
           // Spec Chips Bar
-          const spice = (dish.spiceLevel || 'medium').toUpperCase();
-          const prep = dish.preparationTime || '20-25 mins';
-          const portion = dish.servingSize || 'Serves 2';
-          const cal = dish.calories ? `🔥 ${dish.calories}` : '🏺 Slow-Cooked';
+          const spice = (heroDish.spiceLevel || 'medium').toUpperCase();
+          const prep = heroDish.preparationTime || '20-25 mins';
+          const portion = heroDish.servingSize || 'Serves 2';
 
           specsBar.innerHTML = `
             <span class="stage-spec-chip">🌶️ ${spice} SPICE</span>
             <span class="stage-spec-chip">⏱️ ${escapeHtml(prep)}</span>
             <span class="stage-spec-chip">👥 ${escapeHtml(portion)}</span>
-            <span class="stage-spec-chip">${escapeHtml(cal)}</span>
           `;
 
           // Price & Link
-          dishPrice.textContent = formatCurrency(dish.price);
-          recipeLink.href = `dish.html?id=${dish.id}`;
-
-          // Stepper pills active class
-          stepperRail.querySelectorAll('.course-step-pill').forEach((pill, idx) => {
-            pill.classList.toggle('active', idx === activeIndex);
-          });
-          const activePill = stepperRail.querySelector('.course-step-pill.active');
-          if (activePill) {
-            activePill.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
-          }
+          dishPrice.textContent = formatCurrency(heroDish.price);
+          recipeLink.href = `dish.html?id=${heroDish.id}`;
 
           if (animate) {
             stage.classList.remove('is-transitioning');
           }
-        }, animate ? 150 : 0);
+        }, animate ? 140 : 0);
       }
 
-      function setCourse(idx, userInitiated = false) {
+      function setHeroDish(idx, userInitiated = false) {
         const total = activeList.length;
         if (idx < 0) idx = total - 1;
         if (idx >= total) idx = 0;
         activeIndex = idx;
-        renderCurrentDish(true);
+        renderMandala(true);
         resetProgressTimer();
         if (userInitiated) {
-          if (statusHint) statusHint.textContent = `Focused on Course ${activeIndex + 1} of ${total} · Auto-advancing (Hover to pause)`;
+          if (statusHint) statusHint.textContent = `Focused on ${activeList[activeIndex].name} · Click any outer platter to bring to center`;
         }
       }
 
-      function nextCourse() {
-        setCourse(activeIndex + 1);
+      function nextDish() {
+        setHeroDish(activeIndex + 1);
       }
 
-      function prevCourse() {
-        setCourse(activeIndex - 1);
+      function prevDish() {
+        setHeroDish(activeIndex - 1);
       }
 
       // Progress Timer
@@ -738,7 +745,7 @@
 
             if (elapsedMs >= SLIDE_DURATION) {
               elapsedMs = 0;
-              nextCourse();
+              nextDish();
             }
           }
         }, intervalMs);
@@ -753,13 +760,26 @@
         if (timerProgress) timerProgress.style.width = '0%';
       }
 
-      // Event Listeners: Prev / Next
-      if (prevBtn) prevBtn.addEventListener('click', () => { prevCourse(); });
-      if (nextBtn) nextBtn.addEventListener('click', () => { nextCourse(); });
+      // Satellite clicks -> swap into center
+      satellites.forEach(sat => {
+        if (sat.btn) {
+          sat.btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const targetIdx = parseInt(sat.btn.getAttribute('data-target-idx'), 10);
+            if (!isNaN(targetIdx)) {
+              setHeroDish(targetIdx, true);
+            }
+          });
+        }
+      });
 
-      // Platter frame click opens customize modal
-      if (platterFrame) {
-        platterFrame.addEventListener('click', () => {
+      // Prev / Next Buttons
+      if (prevBtn) prevBtn.addEventListener('click', () => { prevDish(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { nextDish(); });
+
+      // Central Hero click opens customize modal
+      if (heroPlatter) {
+        heroPlatter.addEventListener('click', () => {
           const dish = activeList[activeIndex];
           if (dish) MenuController.openDishModal(dish.id);
         });
@@ -804,8 +824,7 @@
           activeCategory = btn.getAttribute('data-filter');
           activeList = getCategoryDishes(activeCategory);
           activeIndex = 0;
-          renderStepperPills();
-          renderCurrentDish(true);
+          renderMandala(true);
           resetProgressTimer();
         });
       });
@@ -813,27 +832,26 @@
       // Pause on hover
       stageWrapper.addEventListener('mouseenter', () => {
         isPaused = true;
-        if (statusHint) statusHint.textContent = 'Degustation Stage Paused (Inspect secrets or click tabs to explore)';
+        if (statusHint) statusHint.textContent = 'Degustation Mandala Paused (Click any outer platter to bring to center)';
       });
 
       stageWrapper.addEventListener('mouseleave', () => {
         isPaused = false;
-        if (statusHint) statusHint.textContent = 'The Royal Degustation Stage · Auto-advancing (Hover to pause, click course tabs or use arrow keys)';
+        if (statusHint) statusHint.textContent = 'The Royal Degustation Mandala · 5 dishes featured · Click any outer platter to bring to center';
       });
 
       // Keyboard arrow navigation
       document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         if (e.key === 'ArrowLeft') {
-          prevCourse();
+          prevDish();
         } else if (e.key === 'ArrowRight') {
-          nextCourse();
+          nextDish();
         }
       });
 
       // Initial Render & Boot
-      renderStepperPills();
-      renderCurrentDish(false);
+      renderMandala(false);
       startProgressTimer();
 
       // Setup dish modal controller

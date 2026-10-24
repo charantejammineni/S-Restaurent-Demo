@@ -207,44 +207,48 @@ body.nav-drawer-open {
     height: 1px;
   }
 
-  .showcase-header {
+  .showcase-compact-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-md);
+    gap: 12px;
   }
-  .showcase-header-right {
+  .showcase-header-actions {
     width: 100%;
+    justify-content: space-between;
   }
-  .showcase-header-right .btn {
-    width: 100%;
-    text-align: center;
+  .stage-landscape-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
-  .course-stepper-rail {
-    justify-content: flex-start;
+  .degustation-mandala {
+    width: 290px;
+    height: 290px;
+  }
+  .mandala-hero-wrap {
+    width: 150px;
+    height: 150px;
+  }
+  .mandala-satellite {
+    width: 62px;
+    height: 62px;
   }
   .imperial-stage {
-    padding: 36px 18px 28px;
+    padding: 24px 18px 20px;
   }
-  .stage-platter-area {
-    width: 220px;
-    height: 220px;
-    margin-bottom: 20px;
+  .stage-dashboard-col {
+    text-align: center;
+    align-items: center;
   }
-  .imperial-nav-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
+  .stage-tab-switcher {
+    align-self: center;
   }
-  .imperial-nav-prev {
-    left: -12px;
-  }
-  .imperial-nav-next {
-    right: -12px;
+  .stage-specs-bar {
+    justify-content: center;
   }
   .stage-action-bar {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
   }
   .stage-price-box {
     align-items: center;
