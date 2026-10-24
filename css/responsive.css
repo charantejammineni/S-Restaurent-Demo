@@ -207,32 +207,54 @@ body.nav-drawer-open {
     height: 1px;
   }
 
-  .cinematic-header-row {
+  .showcase-header {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-md);
   }
-  .cinematic-header-controls {
+  .showcase-header-right {
     width: 100%;
-    justify-content: space-between;
   }
-  .cinematic-stage-viewport {
-    height: 470px;
+  .showcase-header-right .btn {
+    width: 100%;
+    text-align: center;
   }
-  .cinematic-card {
-    width: 290px;
-    height: 440px;
+  .course-stepper-rail {
+    justify-content: flex-start;
   }
-  .stage-nav-arrow {
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
+  .imperial-stage {
+    padding: 36px 18px 28px;
   }
-  .stage-nav-arrow.stage-nav-prev {
-    left: -8px;
+  .stage-platter-area {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 20px;
   }
-  .stage-nav-arrow.stage-nav-next {
-    right: -8px;
+  .imperial-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  .imperial-nav-prev {
+    left: -12px;
+  }
+  .imperial-nav-next {
+    right: -12px;
+  }
+  .stage-action-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .stage-price-box {
+    align-items: center;
+  }
+  .stage-cta-group {
+    width: 100%;
+    flex-direction: column;
+  }
+  .stage-cta-group .btn {
+    width: 100%;
   }
 
   .hero-features-bar {
