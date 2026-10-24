@@ -5,7 +5,7 @@
 
 const STORAGE_KEYS = {
   SETTINGS: 'srestaurents_settings',
-  MENU: 'srestaurents_menu',
+  MENU: 'srestaurents_menu_v2',
   ORDERS: 'srestaurents_orders',
   RESERVATIONS: 'srestaurents_reservations',
   CART: 'srestaurents_cart',

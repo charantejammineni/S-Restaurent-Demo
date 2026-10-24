@@ -121,7 +121,7 @@ const SEED_DATA = {
       bestseller: false,
       chefSpecial: false,
       available: true,
-      image: 'assets/images/paneer_tikka.jpg',
+      image: 'assets/images/paneer_tikka.jpg?v=2',
       shortDescription: 'Cottage cheese steeped in mustard oil, yellow chilli marinade, and roasted gram flour, charred over clay tandoor embers.',
       description: 'Pillowy fresh cottage cheese cubes marinated in pungent stone-pressed mustard oil, sour curd, ajwain seeds, and degi chilli. Skewered with crunchy bell peppers and crisp red onions, grilled at 400°C in our clay oven to achieve smoky charred edges while retaining melt-in-the-mouth tenderness.',
       story: 'Seasoned with hand-pounded mountain salt and wild ajwain sourced directly from Rajasthan.',

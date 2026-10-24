@@ -4,20 +4,21 @@
    ========================================================================== */
 
 :root {
-  /* Palette: Warm ivory, deep forest green, charcoal, roasted terracotta, muted brass */
-  --color-bg: #FAF7F2;
-  --color-surface: #FFFFFF;
-  --color-surface-subtle: #F4EFE6;
-  --color-surface-accent: #EFE7DA;
-  --color-primary: #183325;       /* Deep imperial forest green */
-  --color-primary-light: #254B37;
-  --color-primary-dark: #0E2016;
-  --color-accent: #C4683C;        /* Warm roasted terracotta / saffron */
-  --color-accent-hover: #AF572E;
-  --color-accent-gold: #C5A059;   /* Muted brass / antique gold */
-  --color-charcoal: #1D211F;      /* Rich dark slate text */
-  --color-muted: #646E67;         /* Balanced editorial body text */
-  --color-border: #E6DFD4;
+  /* Refined Luxury Atelier Palette: Warm Luminous Ivory Silk Canvas with Deep Imperial Forest Green & Roasted Terracotta */
+  --color-bg: #FAF7F2;            /* Luminous warm ivory / fine silk parchment */
+  --color-surface: #FFFFFF;       /* Crisp porcelain white surface */
+  --color-surface-subtle: #F4EFE6; /* Warm textured ivory */
+  --color-surface-accent: #EFE7DA; /* Delicate champagne accent */
+  --color-primary: #12281D;       /* Deep imperial forest green */
+  --color-primary-light: #1D3D2C;
+  --color-primary-dark: #0A1710;
+  --color-accent: #C45525;        /* Warm roasted terracotta / saffron flame */
+  --color-accent-hover: #AA471D;
+  --color-accent-gold: #C5A059;   /* Muted antique brass / royal gold */
+  --color-accent-gold-light: #DFC07E;
+  --color-charcoal: #181D1A;      /* Deep slate charcoal text */
+  --color-muted: #59655E;         /* Balanced editorial secondary text */
+  --color-border: #E6DFD4;        /* Warm parchment border */
   --color-border-dark: #C9BEAC;
   --color-danger: #B33927;
   --color-success: #1E6B47;
@@ -273,9 +274,9 @@ p:last-child {
    -------------------------------------------------------------------------- */
 .site-header {
   height: var(--header-height);
-  background-color: rgba(250, 247, 242, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -436,6 +437,9 @@ p:last-child {
   padding-bottom: var(--space-4xl);
   position: relative;
   overflow: hidden;
+  background: radial-gradient(circle at 85% 20%, rgba(197, 160, 89, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at 15% 85%, rgba(196, 104, 60, 0.05) 0%, transparent 50%),
+              var(--color-bg);
 }
 .hero-grid {
   display: grid;
@@ -447,7 +451,7 @@ p:last-child {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  padding: 5px 14px;
+  padding: 6px 16px;
   background-color: var(--color-surface-accent);
   border: 1px solid var(--color-border-dark);
   border-radius: var(--radius-full);
@@ -459,6 +463,7 @@ p:last-child {
 .hero-headline {
   margin-bottom: var(--space-lg);
   color: var(--color-primary);
+  line-height: 1.16;
 }
 .hero-intro {
   font-size: 1.18rem;
@@ -467,6 +472,82 @@ p:last-child {
   margin-bottom: var(--space-xl);
   max-width: 540px;
 }
+
+/* Hero Dining Experiences Suite (Replaces large subtext, matching hero vibe) */
+.hero-experiences-suite {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+.hero-exp-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(18, 40, 29, 0.04);
+}
+.hero-exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+.hero-exp-card:hover {
+  transform: translateY(-3px);
+  background: #FFFFFF;
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px rgba(18, 40, 29, 0.1);
+}
+.hero-exp-card:hover::before {
+  opacity: 1;
+}
+.hero-exp-icon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  display: inline-block;
+  line-height: 1;
+}
+.hero-exp-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+.hero-exp-desc {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+  margin-bottom: 10px;
+  flex: 1;
+}
+.hero-exp-action {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap var(--transition-fast);
+}
+.hero-exp-card:hover .hero-exp-action {
+  color: var(--color-accent-hover);
+  gap: 7px;
+}
+
 .hero-actions {
   display: flex;
   align-items: center;
@@ -519,16 +600,17 @@ p:last-child {
   position: absolute;
   bottom: -24px;
   left: -24px;
-  background-color: var(--color-surface);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 30px rgba(18, 40, 29, 0.12);
   border: 1px solid var(--color-border);
-  max-width: 260px;
+  max-width: 270px;
 }
 .hero-card-title {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--color-primary);
 }
@@ -536,6 +618,221 @@ p:last-child {
   font-size: 0.8rem;
   color: var(--color-muted);
   margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Animated Signature Dishes Showcase & Gliding Reel
+   -------------------------------------------------------------------------- */
+.menu-showcase-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-4xl);
+}
+
+.menu-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.menu-header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Category Filter Pills for live animated filtering */
+.showcase-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-surface-subtle);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+}
+.showcase-pill-btn {
+  background: transparent;
+  border: none;
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+.showcase-pill-btn:hover {
+  color: var(--color-primary);
+}
+.showcase-pill-btn.active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(18, 40, 29, 0.2);
+}
+
+/* Carousel Nav Buttons */
+.carousel-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.carousel-nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  background: #FFFFFF;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 6px rgba(18, 40, 29, 0.05);
+}
+.carousel-nav-btn:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(18, 40, 29, 0.18);
+}
+.carousel-nav-btn:active {
+  transform: scale(0.96);
+}
+
+.menu-explore-btn {
+  white-space: nowrap;
+}
+
+/* Stage & Viewport */
+.carousel-stage-container {
+  position: relative;
+  overflow: visible;
+}
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 2px 20px;
+}
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Card Styling inside the Carousel with Enhanced Movement & Design */
+.carousel-dish-card {
+  flex: 0 0 calc((100% - (24px * 3)) / 4);
+  min-width: 275px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(18, 40, 29, 0.04);
+  animation: cardFadeSlide 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.carousel-dish-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-accent-gold);
+  box-shadow: 0 16px 36px rgba(18, 40, 29, 0.12);
+}
+
+.carousel-dish-card .dish-card-media {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: var(--color-surface-subtle);
+}
+.carousel-dish-card .dish-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+.carousel-dish-card:hover .dish-card-img {
+  transform: scale(1.08);
+  filter: brightness(1.03);
+}
+
+/* Pagination Dots Bar */
+.carousel-pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-xl);
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: #DDD4C6;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.carousel-dot:hover {
+  background-color: var(--color-accent);
+}
+.carousel-dot.active {
+  width: 28px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Auto-Glide Pause Indicator / Hint */
+.carousel-status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-top: 8px;
+}
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  display: inline-block;
+  animation: livePulse 2s infinite;
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 /* --------------------------------------------------------------------------
@@ -597,12 +894,14 @@ p:last-child {
   position: absolute;
   bottom: 24px;
   right: -24px;
-  background-color: var(--color-primary);
-  color: #FFFFFF;
+  background-color: rgba(13, 30, 21, 0.94);
+  backdrop-filter: blur(10px);
+  color: #FAF7F0;
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   max-width: 280px;
   box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-left: 3px solid var(--color-accent-gold);
 }
 .story-quote-text {
@@ -610,7 +909,7 @@ p:last-child {
   font-size: 1.05rem;
   font-style: italic;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(250, 247, 240, 0.95);
 }
 .story-quote-author {
   font-size: 0.78rem;
@@ -646,7 +945,7 @@ p:last-child {
    -------------------------------------------------------------------------- */
 .offers-banner {
   background-color: var(--color-surface);
-  border: 1px dashed var(--color-accent);
+  border: 1px dashed rgba(212, 175, 55, 0.45);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   display: flex;
@@ -660,32 +959,34 @@ p:last-child {
   align-items: center;
   gap: var(--space-sm);
   background-color: var(--color-surface-subtle);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   padding: 6px 14px;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-accent-gold);
 }
 
 /* --------------------------------------------------------------------------
    Table Booking Teaser CTA
    -------------------------------------------------------------------------- */
 .booking-cta-box {
-  background-color: var(--color-primary);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #152B1E 0%, #0D1E15 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #FAF7F0;
   border-radius: var(--radius-xl);
   padding: var(--space-3xl) var(--space-2xl);
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 .booking-cta-box h2 {
-  color: #FFFFFF;
+  color: #FAF7F0;
   margin-bottom: var(--space-md);
 }
 .booking-cta-box p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #B3C4B9;
   max-width: 580px;
   margin-left: auto;
   margin-right: auto;

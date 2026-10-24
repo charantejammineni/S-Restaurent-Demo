@@ -1,0 +1,16 @@
+# Node / Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Recursive / link safety
+srestaurents-demo/

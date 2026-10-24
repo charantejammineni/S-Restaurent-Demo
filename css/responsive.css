@@ -164,6 +164,9 @@ body.nav-drawer-open {
   .tracking-details-grid {
     grid-template-columns: 1fr !important;
   }
+  .carousel-dish-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
 }
 
 /* Tablets (<= 768px) */
@@ -197,6 +200,25 @@ body.nav-drawer-open {
 
   .location-hours-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-experiences-suite {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .menu-carousel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+  .menu-header-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .carousel-dish-card {
+    flex: 0 0 85%;
+    min-width: 250px;
   }
 
   .hero-features-bar {

@@ -107,9 +107,30 @@
             <span>Heritage Awadhi, Royal Grills &amp; Pan-Asian</span>
           </div>
           <h1 class="hero-headline font-serif">Food born of fire, time, and heritage.</h1>
-          <p class="hero-intro">
-            At Srestaurents, we honor slow-cooked Awadhi traditions alongside charcoal tandoori grills and modern pan-Asian curations. Every handi is sealed with dough, every spice stone-ground, and every plate served with warmth.
-          </p>
+          <!-- Hero Dining Experiences Suite (Replaces large subtext, matching the hero vibe) -->
+          <div class="hero-experiences-suite">
+            <a href="reservations.html" class="hero-exp-card" title="Reserve a table in our courtyard">
+              <span class="hero-exp-icon">🌿</span>
+              <h3 class="hero-exp-title">Courtyard Dine-In</h3>
+              <p class="hero-exp-desc">Acoustic dining hall &amp; open-air frangipani branches.</p>
+              <span class="hero-exp-action">Book Table →</span>
+            </a>
+
+            <a href="menu.html?fulfillment=pickup" class="hero-exp-card" title="Curbside Valet Pickup">
+              <span class="hero-exp-icon">🛍️</span>
+              <h3 class="hero-exp-title">Curbside Takeaway</h3>
+              <p class="hero-exp-desc">Piping hot valet pickup without waiting or stepping out.</p>
+              <span class="hero-exp-action">Schedule Pickup →</span>
+            </a>
+
+            <a href="menu.html?fulfillment=delivery" class="hero-exp-card" title="Direct Doorstep Delivery">
+              <span class="hero-exp-icon">🛵</span>
+              <h3 class="hero-exp-title">Gourmet Delivery</h3>
+              <p class="hero-exp-desc">Tamper-proof insulated thermal handis to your door.</p>
+              <span class="hero-exp-action">Order Online →</span>
+            </a>
+          </div>
+
           <div class="hero-actions">
             <a href="menu.html" class="btn btn-primary btn-lg">Explore Our Menu →</a>
             <a href="reservations.html" class="btn btn-outline btn-lg">Book a Table</a>
@@ -143,62 +164,53 @@
       </div>
     </section>
 
-    <!-- Services Bar -->
-    <section class="section section-sm section-bg-subtle">
+    <!-- Animated Signature Dishes Showcase Section -->
+    <section class="section menu-showcase-section" id="signatures-section">
       <div class="container">
-        <div class="services-grid">
-          <div class="service-pillar-card">
-            <span class="service-pillar-icon">🌿</span>
-            <h3 class="service-pillar-title font-serif">The Courtyard Dine-In</h3>
-            <p class="service-pillar-desc">
-              Dine beneath open-air frangipani branches or inside our warm acoustic dining hall with handcrafted copper tableware.
-            </p>
-            <div class="mt-3">
-              <a href="reservations.html" class="btn-link text-sm">Reserve a Table →</a>
-            </div>
+        <!-- Clean, elegant control bar with interactive filter pills, navigation arrows & full menu button -->
+        <div class="menu-carousel-header">
+          <!-- Filter Pills for interactive animated switching -->
+          <div class="showcase-filter-pills" id="showcase-category-filters">
+            <button class="showcase-pill-btn active" data-filter="all">All Signatures</button>
+            <button class="showcase-pill-btn" data-filter="curries">Curries</button>
+            <button class="showcase-pill-btn" data-filter="biryani">Biryani</button>
+            <button class="showcase-pill-btn" data-filter="starters">Clay Tandoor</button>
           </div>
 
-          <div class="service-pillar-card">
-            <span class="service-pillar-icon">🛍️</span>
-            <h3 class="service-pillar-title font-serif">Curbside Takeaway</h3>
-            <p class="service-pillar-desc">
-              Order online and collect piping hot directly at our Jubilee Hills valet counter without waiting or stepping out.
-            </p>
-            <div class="mt-3">
-              <a href="menu.html" class="btn-link text-sm">Schedule Pickup →</a>
+          <div class="menu-header-controls">
+            <!-- Animated Slider Controls (Prev / Next) -->
+            <div class="carousel-nav-group">
+              <button class="carousel-nav-btn" id="carousel-prev-btn" aria-label="Previous dishes" title="Previous dishes">
+                <span>←</span>
+              </button>
+              <button class="carousel-nav-btn" id="carousel-next-btn" aria-label="Next dishes" title="Next dishes">
+                <span>→</span>
+              </button>
             </div>
-          </div>
 
-          <div class="service-pillar-card">
-            <span class="service-pillar-icon">🛵</span>
-            <h3 class="service-pillar-title font-serif">Gourmet Direct Delivery</h3>
-            <p class="service-pillar-desc">
-              Biodegradable tamper-proof thermal packaging engineered to keep gravies silky and rotis blistered and warm.
-            </p>
-            <div class="mt-3">
-              <a href="menu.html" class="btn-link text-sm">Order to Doorstep →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Signature Dishes Spotlight -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header flex-between align-center flex-wrap gap-3">
-          <div>
-            <span class="section-tag">Chef's Curations</span>
-            <h2 class="font-serif">Signature Dishes from the Hearth</h2>
-            <p class="section-subtitle">A curated selection of our most celebrated dishes, prepared strictly to authentic recipes.</p>
-          </div>
-          <div>
-            <a href="menu.html" class="btn btn-outline">View Full Repertoire →</a>
+            <!-- Single Full Menu Button in this section -->
+            <a href="menu.html" class="btn btn-primary menu-explore-btn">
+              Explore Full Menu (28) →
+            </a>
           </div>
         </div>
 
-        <div class="grid grid-4 gap-4" id="home-featured-grid">
-          <!-- Populated dynamically from storage so changes in admin appear here! -->
+        <!-- Animated Carousel Stage Container -->
+        <div class="carousel-stage-container" id="carousel-stage-container">
+          <div class="carousel-viewport" id="carousel-viewport">
+            <div class="carousel-track" id="home-featured-track">
+              <!-- Dynamically populated animated dish cards -->
+            </div>
+          </div>
+          <!-- Animated Progress & Pagination Dots Indicator -->
+          <div class="carousel-pagination-bar" id="carousel-dots-bar">
+            <!-- Dynamically generated pagination indicators -->
+          </div>
+          <!-- Live Auto-Glide indicator -->
+          <div class="carousel-status-indicator">
+            <span class="pulse-dot"></span>
+            <span>Live Kitchen Spotlight · Auto-glides every 3.5s (Hover to pause)</span>
+          </div>
         </div>
       </div>
     </section>
@@ -275,7 +287,7 @@
           </p>
           <div class="flex-center gap-3 flex-wrap">
             <a href="reservations.html" class="btn btn-secondary btn-lg">Book Table Online →</a>
-            <a href="contact.html" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">View Opening Hours</a>
+            <a href="contact.html" class="btn btn-outline btn-lg" style="color: #FFFFFF !important; border-color: rgba(255,255,255,0.6) !important; background: transparent !important;">View Opening Hours</a>
           </div>
         </div>
       </div>
@@ -408,7 +420,7 @@
           This website is an interactive front-end prototype. All menu dishes, orders, mock payments, and table bookings are stored locally in browser localStorage for evaluation.
         </p>
         <div class="mt-2">
-          <a href="admin/index.html" class="btn btn-outline btn-sm" style="color: #FFFFFF; border-color: rgba(255,255,255,0.3);">
+          <a href="admin/index.html" class="btn btn-outline btn-sm" style="color: #FFFFFF !important; border-color: rgba(255,255,255,0.4) !important; background: transparent !important;">
             Open Admin Dashboard ↗
           </a>
         </div>
@@ -432,19 +444,37 @@
   <script src="js/cart.js"></script>
   <script src="js/menu.js"></script>
   <script>
-    // Initialize Homepage specific features
+    // Initialize Homepage Interactive Carousel & Movement
     document.addEventListener('DOMContentLoaded', () => {
-      // Render 4 featured dishes in homepage grid
-      const grid = document.getElementById('home-featured-grid');
-      if (grid) {
-        const menu = StorageService.getMenu();
-        const featured = menu.filter(d => d.featured).slice(0, 4);
-        const favs = StorageService.getFavorites();
+      const track = document.getElementById('home-featured-track');
+      const dotsBar = document.getElementById('carousel-dots-bar');
+      const prevBtn = document.getElementById('carousel-prev-btn');
+      const nextBtn = document.getElementById('carousel-next-btn');
+      const filterBtns = document.querySelectorAll('.showcase-pill-btn');
+      const stageContainer = document.getElementById('carousel-stage-container');
 
-        grid.innerHTML = featured.map(dish => {
+      if (!track) return;
+
+      const fullMenu = StorageService.getMenu();
+      // Select top celebrated dishes across categories
+      let currentDishes = fullMenu.filter(d => d.featured || d.bestseller || d.chefSpecial);
+      if (currentDishes.length < 6) currentDishes = fullMenu.slice(0, 8);
+
+      let activeIndex = 0;
+      let autoPlayTimer = null;
+
+      function renderCarousel(filteredCategory = 'all') {
+        const favs = StorageService.getFavorites();
+        let list = currentDishes;
+        if (filteredCategory !== 'all') {
+          list = fullMenu.filter(d => d.category === filteredCategory);
+          if (list.length === 0) list = currentDishes;
+        }
+
+        track.innerHTML = list.map((dish, idx) => {
           const isFav = favs.includes(dish.id);
           return `
-            <article class="dish-card" data-dish-id="${dish.id}">
+            <article class="carousel-dish-card" data-dish-id="${dish.id}" style="animation-delay: ${idx * 60}ms;">
               <div class="dish-card-media">
                 <img src="${dish.image}" alt="${escapeHtml(dish.name)}" class="dish-card-img" loading="lazy">
                 <div class="dish-media-overlay">
@@ -483,8 +513,8 @@
           `;
         }).join('');
 
-        // Attach modal trigger to customize buttons
-        grid.querySelectorAll('[data-open-dish]').forEach(btn => {
+        // Attach listeners
+        track.querySelectorAll('[data-open-dish]').forEach(btn => {
           btn.addEventListener('click', (e) => {
             e.preventDefault();
             const dishId = btn.getAttribute('data-open-dish');
@@ -492,8 +522,7 @@
           });
         });
 
-        // Attach favorite buttons
-        grid.querySelectorAll('[data-fav-id]').forEach(btn => {
+        track.querySelectorAll('[data-fav-id]').forEach(btn => {
           btn.addEventListener('click', (e) => {
             e.preventDefault();
             const dishId = btn.getAttribute('data-fav-id');
@@ -504,9 +533,142 @@
             showToast(isNowFav ? 'Saved to favourite dishes' : 'Removed from favourites', 'info');
           });
         });
+
+        activeIndex = 0;
+        updateTrackPosition();
+        renderDots(list.length);
       }
 
-      // Initialize MenuController for modal handling
+      function getMaxIndex() {
+        const cards = track.querySelectorAll('.carousel-dish-card');
+        if (cards.length === 0) return 0;
+        const viewportWidth = track.parentElement.offsetWidth;
+        const cardWidth = cards[0].offsetWidth + 24; // width + gap
+        const visibleCount = Math.max(1, Math.floor(viewportWidth / cardWidth));
+        return Math.max(0, cards.length - visibleCount);
+      }
+
+      function updateTrackPosition() {
+        const cards = track.querySelectorAll('.carousel-dish-card');
+        if (cards.length === 0) return;
+        const cardWidth = cards[0].offsetWidth + 24;
+        const maxIdx = getMaxIndex();
+        if (activeIndex > maxIdx) activeIndex = maxIdx;
+        if (activeIndex < 0) activeIndex = 0;
+
+        const offset = activeIndex * cardWidth;
+        track.style.transform = `translateX(-${offset}px)`;
+
+        // Update dots
+        if (dotsBar) {
+          dotsBar.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === activeIndex);
+          });
+        }
+      }
+
+      function renderDots(totalCards) {
+        if (!dotsBar) return;
+        const maxIdx = getMaxIndex();
+        const dotCount = Math.min(totalCards, maxIdx + 1);
+        if (dotCount <= 1) {
+          dotsBar.innerHTML = '';
+          return;
+        }
+
+        let html = '';
+        for (let i = 0; i < dotCount; i++) {
+          html += `<button class="carousel-dot ${i === activeIndex ? 'active' : ''}" data-dot-idx="${i}" aria-label="Go to slide ${i+1}"></button>`;
+        }
+        dotsBar.innerHTML = html;
+
+        dotsBar.querySelectorAll('.carousel-dot').forEach(dot => {
+          dot.addEventListener('click', () => {
+            activeIndex = parseInt(dot.getAttribute('data-dot-idx'), 10);
+            updateTrackPosition();
+            restartAutoPlay();
+          });
+        });
+      }
+
+      function nextSlide() {
+        const maxIdx = getMaxIndex();
+        if (activeIndex >= maxIdx) {
+          activeIndex = 0; // Loop seamlessly
+        } else {
+          activeIndex++;
+        }
+        updateTrackPosition();
+      }
+
+      function prevSlide() {
+        const maxIdx = getMaxIndex();
+        if (activeIndex <= 0) {
+          activeIndex = maxIdx;
+        } else {
+          activeIndex--;
+        }
+        updateTrackPosition();
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          nextSlide();
+          restartAutoPlay();
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          prevSlide();
+          restartAutoPlay();
+        });
+      }
+
+      // Filter pills switching
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          renderCarousel(filter);
+          restartAutoPlay();
+        });
+      });
+
+      // Auto-glide with pause on hover
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(() => {
+          nextSlide();
+        }, 3600);
+      }
+
+      function stopAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+      }
+
+      function restartAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+      }
+
+      if (stageContainer) {
+        stageContainer.addEventListener('mouseenter', stopAutoPlay);
+        stageContainer.addEventListener('mouseleave', startAutoPlay);
+      }
+
+      window.addEventListener('resize', () => {
+        updateTrackPosition();
+        const cards = track.querySelectorAll('.carousel-dish-card');
+        renderDots(cards.length);
+      });
+
+      // Initial render & run
+      renderCarousel('all');
+      startAutoPlay();
+
+      // Initialize MenuController for dish modal
       MenuController.setupModal();
     });
   </script>
