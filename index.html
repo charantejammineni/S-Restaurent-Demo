@@ -106,7 +106,7 @@
             <span>✨</span>
             <span>Heritage Awadhi, Royal Grills &amp; Pan-Asian</span>
           </div>
-          <h1 class="hero-headline font-serif">Food born of fire, time, and heritage.</h1>
+          <h1 class="hero-headline font-serif">Food born of <span class="gold-gradient-text">fire, time, and heritage.</span></h1>
           <!-- Minimalist Dining Concierge Bar (Clean horizontal strip, reduced text, luxury aesthetic) -->
           <div class="hero-dining-bar">
             <a href="reservations.html" class="dining-bar-item" title="Book a table in our courtyard">
@@ -585,8 +585,20 @@
       let activeTab = 'story';
       let progressTimer = null;
       let isPaused = false;
-      const SLIDE_DURATION = 5500;
+      let isVisibleInViewport = false;
+      const SLIDE_DURATION = 3800; // Fastened rotation interval from 5500ms to 3800ms
       let elapsedMs = 0;
+
+      // Preload active dish images in memory for instantaneous zero-latency switching
+      function preloadSignatureImages() {
+        activeList.forEach(dish => {
+          if (dish && dish.image) {
+            const img = new Image();
+            img.src = dish.image;
+          }
+        });
+      }
+      preloadSignatureImages();
 
       function getCategoryDishes(cat) {
         if (cat === 'all') return signatureDishes;
@@ -710,7 +722,7 @@
           if (animate) {
             stage.classList.remove('is-transitioning');
           }
-        }, animate ? 140 : 0);
+        }, animate ? 75 : 0); // Snappy 75ms transition
       }
 
       function setHeroDish(idx, userInitiated = false) {
@@ -726,6 +738,7 @@
       }
 
       function nextDish() {
+        if (!isVisibleInViewport) return; // Only advance when viewing menu section
         setHeroDish(activeIndex + 1);
       }
 
@@ -736,9 +749,11 @@
       // Progress Timer
       function startProgressTimer() {
         stopProgressTimer();
-        const intervalMs = 50;
+        if (!isVisibleInViewport) return; // Strict guard: only tick when visible
+
+        const intervalMs = 40;
         progressTimer = setInterval(() => {
-          if (!isPaused) {
+          if (!isPaused && isVisibleInViewport) {
             elapsedMs += intervalMs;
             const pct = Math.min((elapsedMs / SLIDE_DURATION) * 100, 100);
             if (timerProgress) timerProgress.style.width = `${pct}%`;
@@ -752,7 +767,10 @@
       }
 
       function stopProgressTimer() {
-        if (progressTimer) clearInterval(progressTimer);
+        if (progressTimer) {
+          clearInterval(progressTimer);
+          progressTimer = null;
+        }
       }
 
       function resetProgressTimer() {
@@ -824,6 +842,7 @@
           activeCategory = btn.getAttribute('data-filter');
           activeList = getCategoryDishes(activeCategory);
           activeIndex = 0;
+          preloadSignatureImages();
           renderMandala(true);
           resetProgressTimer();
         });
@@ -850,9 +869,31 @@
         }
       });
 
-      // Initial Render & Boot
+      // Initial Static Render (Loads first dish statically without auto-cycling)
       renderMandala(false);
-      startProgressTimer();
+
+      // Viewport IntersectionObserver: Load and change ONLY while viewing that menu section
+      const showcaseSection = document.getElementById('signatures-section');
+      if (showcaseSection && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              isVisibleInViewport = true;
+              startProgressTimer();
+            } else {
+              isVisibleInViewport = false;
+              stopProgressTimer();
+              resetProgressTimer();
+            }
+          });
+        }, {
+          threshold: 0.2 // Starts only when at least 20% of menu section is visible in viewport
+        });
+        observer.observe(showcaseSection);
+      } else {
+        isVisibleInViewport = true;
+        startProgressTimer();
+      }
 
       // Setup dish modal controller
       MenuController.setupModal();
