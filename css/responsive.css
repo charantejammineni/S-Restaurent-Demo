@@ -203,13 +203,13 @@ body.nav-drawer-open {
     grid-template-columns: 1fr;
   }
 
-  .hero-atelier-strip {
+  .hero-dining-bar {
     flex-direction: column;
+    align-items: stretch;
   }
-  .corridor-divider {
+  .dining-bar-separator {
     width: 100%;
     height: 1px;
-    margin: 0;
   }
 
   .degustation-top-bar {

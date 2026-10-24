@@ -473,93 +473,73 @@ p:last-child {
   max-width: 540px;
 }
 
-/* Hero Dining Experiences Suite (Replaces large subtext, matching hero vibe) */
-.hero-experiences-suite {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
 /* --------------------------------------------------------------------------
-   Hero Atelier Concierge Service Strip (Seamless Architectural Ribbon)
+   Minimalist Dining Concierge Bar (Clean horizontal strip, luxury aesthetic)
    -------------------------------------------------------------------------- */
-.hero-atelier-strip {
+.hero-dining-bar {
   display: flex;
-  align-items: stretch;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(197, 160, 89, 0.3);
+  align-items: center;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 160, 89, 0.35);
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-xl);
   box-shadow: 0 4px 20px rgba(18, 40, 29, 0.05);
   overflow: hidden;
-  position: relative;
 }
-.hero-atelier-strip::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-}
-.atelier-corridor {
+.dining-bar-item {
   flex: 1;
-  padding: 16px 20px;
+  padding: 14px 18px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
-  transition: all var(--transition-base);
-  position: relative;
+  transition: all var(--transition-fast);
 }
-.atelier-corridor:hover {
-  background: rgba(255, 255, 255, 0.95);
+.dining-bar-item:hover {
+  background: #FFFFFF;
 }
-.corridor-icon-badge {
+.dining-bar-icon {
   font-size: 1.4rem;
   line-height: 1;
-  margin-bottom: 8px;
+  flex-shrink: 0;
 }
-.corridor-tag {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-accent);
-  font-weight: 700;
-  display: block;
-  margin-bottom: 2px;
+.dining-bar-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
-.corridor-title {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
+.dining-bar-title {
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-primary);
-  margin-bottom: 4px;
-  line-height: 1.25;
+  line-height: 1.2;
 }
-.corridor-desc {
-  font-size: 0.78rem;
+.dining-bar-sub {
+  font-size: 0.74rem;
   color: var(--color-muted);
-  line-height: 1.4;
-  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
 }
-.corridor-arrow {
+.dining-bar-link {
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-accent);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: gap var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+  transition: transform var(--transition-fast), color var(--transition-fast);
 }
-.atelier-corridor:hover .corridor-arrow {
+.dining-bar-item:hover .dining-bar-link {
   color: var(--color-accent-hover);
-  gap: 8px;
+  transform: translateX(4px);
 }
-.corridor-divider {
+.dining-bar-separator {
   width: 1px;
-  background: rgba(18, 40, 29, 0.09);
-  margin: 12px 0;
+  height: 38px;
+  background: rgba(18, 40, 29, 0.12);
   flex-shrink: 0;
 }
 
@@ -635,7 +615,6 @@ p:last-child {
   margin-top: 2px;
 }
 
-/* --------------------------------------------------------------------------
 /* --------------------------------------------------------------------------
    Master Degustation Arena & Interactive Tasting Ledger
    -------------------------------------------------------------------------- */
