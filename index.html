@@ -297,17 +297,12 @@
               </div>
             </div>
 
-            <!-- Auto-Advance Timer Progress Bar -->
-            <div class="stage-timer-track">
-              <div class="stage-timer-progress" id="stage-timer-progress"></div>
-            </div>
           </div>
         </div>
 
-        <!-- Live Status Hint Bar -->
+        <!-- Degustation Hint Bar -->
         <div class="showcase-status-bar">
-          <span class="pulse-dot"></span>
-          <span id="showcase-status-hint">The Royal Degustation Mandala · 5 dishes featured · Click any outer platter to bring to center</span>
+          <span id="showcase-status-hint">✨ The Royal Degustation Mandala · Click any outer platter to bring to center</span>
         </div>
       </div>
     </section>
@@ -558,7 +553,6 @@
       const dishPrice = document.getElementById('stage-dish-price');
       const customizeBtn = document.getElementById('stage-customize-btn');
       const recipeLink = document.getElementById('stage-recipe-link');
-      const timerProgress = document.getElementById('stage-timer-progress');
       const prevBtn = document.getElementById('stage-prev-btn');
       const nextBtn = document.getElementById('stage-next-btn');
       const filterBtns = document.querySelectorAll('#degustation-filters .showcase-pill-btn');
@@ -767,24 +761,16 @@
         setHeroDish(activeIndex - 1);
       }
 
-      // Progress Timer
+      // Seamless Auto-Advance Rotation Timer (No loading bar)
       function startProgressTimer() {
         stopProgressTimer();
-        if (!isVisibleInViewport) return; // Strict guard: only tick when visible
+        if (!isVisibleInViewport) return;
 
-        const intervalMs = 40;
         progressTimer = setInterval(() => {
           if (!isPaused && isVisibleInViewport) {
-            elapsedMs += intervalMs;
-            const pct = Math.min((elapsedMs / SLIDE_DURATION) * 100, 100);
-            if (timerProgress) timerProgress.style.width = `${pct}%`;
-
-            if (elapsedMs >= SLIDE_DURATION) {
-              elapsedMs = 0;
-              nextDish();
-            }
+            nextDish();
           }
-        }, intervalMs);
+        }, SLIDE_DURATION);
       }
 
       function stopProgressTimer() {
@@ -795,8 +781,9 @@
       }
 
       function resetProgressTimer() {
-        elapsedMs = 0;
-        if (timerProgress) timerProgress.style.width = '0%';
+        if (isVisibleInViewport && !isPaused) {
+          startProgressTimer();
+        }
       }
 
       // Satellite clicks -> swap into center
@@ -875,12 +862,10 @@
       // Pause on hover
       stageWrapper.addEventListener('mouseenter', () => {
         isPaused = true;
-        if (statusHint) statusHint.textContent = 'Degustation Mandala Paused (Click any outer platter to bring to center)';
       });
 
       stageWrapper.addEventListener('mouseleave', () => {
         isPaused = false;
-        if (statusHint) statusHint.textContent = 'The Royal Degustation Mandala · 5 dishes featured · Click any outer platter to bring to center';
       });
 
       // Keyboard arrow navigation
