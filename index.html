@@ -643,86 +643,107 @@
         return `<div class="tab-fade-in">${escapeHtml(dish.story || dish.description || dish.shortDescription)}</div>`;
       }
 
+      const heroHalo = document.querySelector('.hero-glow-halo');
+      const ringOuter = document.querySelector('.mandala-orbit-ring.ring-outer');
+      let currentOrbitAngle = 0;
+
+      function triggerAnim(el) {
+        if (!el) return;
+        el.classList.remove('is-animating');
+        void el.offsetWidth; // Force CSS reflow to re-trigger keyframe animation
+        el.classList.add('is-animating');
+      }
+
       function renderMandala(animate = false) {
         const total = activeList.length;
         const heroDish = activeList[activeIndex];
         if (!heroDish) return;
 
-        if (animate) {
-          stage.classList.add('is-transitioning');
+        // Central Hero Image & Badges
+        dishImg.src = heroDish.image;
+        dishImg.alt = heroDish.name;
+
+        // Dietary Badge
+        dietaryBadge.innerHTML = `
+          <span class="dietary-marker dietary-${heroDish.dietary}">
+            <span class="dietary-symbol"></span>
+          </span>
+        `;
+
+        // Royal Badge
+        if (heroDish.chefSpecial) {
+          royalBadge.textContent = "👑 Chef's Signature";
+          royalBadge.style.display = 'block';
+        } else if (heroDish.bestseller) {
+          royalBadge.textContent = "⭐ Atelier Bestseller";
+          royalBadge.style.display = 'block';
+        } else {
+          royalBadge.textContent = "✨ Royal Creation";
+          royalBadge.style.display = 'block';
         }
 
-        setTimeout(() => {
-          // Central Hero Image & Badges
-          dishImg.src = heroDish.image;
-          dishImg.alt = heroDish.name;
+        // Favorite Heart
+        const favs = StorageService.getFavorites();
+        const isFav = favs.includes(heroDish.id);
+        favBtn.classList.toggle('is-fav', isFav);
+        favBtn.querySelector('.fav-icon').textContent = isFav ? '♥' : '♡';
 
-          // Dietary Badge
-          dietaryBadge.innerHTML = `
-            <span class="dietary-marker dietary-${heroDish.dietary}">
-              <span class="dietary-symbol"></span>
-            </span>
-          `;
-
-          // Royal Badge
-          if (heroDish.chefSpecial) {
-            royalBadge.textContent = "👑 Chef's Signature";
-            royalBadge.style.display = 'block';
-          } else if (heroDish.bestseller) {
-            royalBadge.textContent = "⭐ Atelier Bestseller";
-            royalBadge.style.display = 'block';
-          } else {
-            royalBadge.textContent = "✨ Royal Creation";
-            royalBadge.style.display = 'block';
+        // 4 Satellite Dishes (4 unique other dishes from activeList)
+        satellites.forEach((sat, satIdx) => {
+          const dishOffset = (activeIndex + satIdx + 1) % total;
+          const satDish = activeList[dishOffset];
+          if (satDish && sat.img && sat.tag) {
+            sat.img.src = satDish.image;
+            sat.img.alt = satDish.name;
+            // Shorten tag for aesthetic fit
+            const shortTitle = satDish.name.split(' ').slice(0, 2).join(' ');
+            sat.tag.textContent = shortTitle;
+            sat.btn.setAttribute('data-target-idx', dishOffset);
           }
+        });
 
-          // Favorite Heart
-          const favs = StorageService.getFavorites();
-          const isFav = favs.includes(heroDish.id);
-          favBtn.classList.toggle('is-fav', isFav);
-          favBtn.querySelector('.fav-icon').textContent = isFav ? '♥' : '♡';
+        // Course and Title
+        courseNum.textContent = `CREATION ${String(activeIndex + 1).padStart(2, '0')} OF ${String(total).padStart(2, '0')} · ${getCategoryLabel(heroDish.category)}`;
+        if (courseCounter) courseCounter.textContent = `${activeIndex + 1} / ${total}`;
+        dishTitle.textContent = heroDish.name;
 
-          // 4 Satellite Dishes (4 unique other dishes from activeList)
-          satellites.forEach((sat, satIdx) => {
-            const dishOffset = (activeIndex + satIdx + 1) % total;
-            const satDish = activeList[dishOffset];
-            if (satDish && sat.img && sat.tag) {
-              sat.img.src = satDish.image;
-              sat.img.alt = satDish.name;
-              // Shorten tag for aesthetic fit
-              const shortTitle = satDish.name.split(' ').slice(0, 2).join(' ');
-              sat.tag.textContent = shortTitle;
-              sat.btn.setAttribute('data-target-idx', dishOffset);
-            }
+        // Tab Content
+        tabContent.innerHTML = getTabHtml(heroDish, activeTab);
+
+        // Spec Chips Bar
+        const spice = (heroDish.spiceLevel || 'medium').toUpperCase();
+        const prep = heroDish.preparationTime || '20-25 mins';
+        const portion = heroDish.servingSize || 'Serves 2';
+
+        specsBar.innerHTML = `
+          <span class="stage-spec-chip">🌶️ ${spice} SPICE</span>
+          <span class="stage-spec-chip">⏱️ ${escapeHtml(prep)}</span>
+          <span class="stage-spec-chip">👥 ${escapeHtml(portion)}</span>
+        `;
+
+        // Price & Link
+        dishPrice.textContent = formatCurrency(heroDish.price);
+        recipeLink.href = `dish.html?id=${heroDish.id}`;
+
+        if (animate) {
+          // Trigger smooth choreographed fluid animations (Zero reload flicker)
+          triggerAnim(dishImg);
+          triggerAnim(heroHalo);
+          satellites.forEach(sat => {
+            if (sat.btn) triggerAnim(sat.btn);
           });
+          triggerAnim(dishTitle);
+          triggerAnim(courseNum);
+          triggerAnim(tabContent);
+          triggerAnim(specsBar);
+          triggerAnim(dishPrice);
 
-          // Course and Title
-          courseNum.textContent = `CREATION ${String(activeIndex + 1).padStart(2, '0')} OF ${String(total).padStart(2, '0')} · ${getCategoryLabel(heroDish.category)}`;
-          if (courseCounter) courseCounter.textContent = `${activeIndex + 1} / ${total}`;
-          dishTitle.textContent = heroDish.name;
-
-          // Tab Content
-          tabContent.innerHTML = getTabHtml(heroDish, activeTab);
-
-          // Spec Chips Bar
-          const spice = (heroDish.spiceLevel || 'medium').toUpperCase();
-          const prep = heroDish.preparationTime || '20-25 mins';
-          const portion = heroDish.servingSize || 'Serves 2';
-
-          specsBar.innerHTML = `
-            <span class="stage-spec-chip">🌶️ ${spice} SPICE</span>
-            <span class="stage-spec-chip">⏱️ ${escapeHtml(prep)}</span>
-            <span class="stage-spec-chip">👥 ${escapeHtml(portion)}</span>
-          `;
-
-          // Price & Link
-          dishPrice.textContent = formatCurrency(heroDish.price);
-          recipeLink.href = `dish.html?id=${heroDish.id}`;
-
-          if (animate) {
-            stage.classList.remove('is-transitioning');
+          // Rotate the celestial orbit ring smoothly on each course change
+          currentOrbitAngle += 45;
+          if (ringOuter) {
+            ringOuter.style.transform = `rotate(${currentOrbitAngle}deg)`;
           }
-        }, animate ? 75 : 0); // Snappy 75ms transition
+        }
       }
 
       function setHeroDish(idx, userInitiated = false) {
@@ -811,7 +832,10 @@
             btn.classList.add('active');
             activeTab = btn.getAttribute('data-tab');
             const dish = activeList[activeIndex];
-            if (dish) tabContent.innerHTML = getTabHtml(dish, activeTab);
+            if (dish) {
+              tabContent.innerHTML = getTabHtml(dish, activeTab);
+              triggerAnim(tabContent);
+            }
           });
         });
       }
